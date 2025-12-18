@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SilverLine | Best Multi Speciality Hospital in Trichy</title>
+    <meta name="description" content="SilverLine Hospital is Trichy's best and pioneer multi-speciality hospital, offering advanced medical care, expert doctors, and patient-centric services across cardiology, oncology, orthopedics, and more.">
+    <link rel="canonical" href="https://silverlinehospitals.com/" />
+    <link rel="icon" href='favicon.svg'>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&family=Poppins:wght@500;700&display=swap" rel="stylesheet">
+
+    <!-- Critical CSS: Ensures site looks good immediately, even before Tailwind loads -->
+    <style>
+      /* Reset & Base */
+      *, *::before, *::after { box-sizing: border-box; }
+      body { margin: 0; padding: 0; font-family: 'Montserrat', sans-serif; overflow-x: hidden; width: 100%; }
+      /* Removed conflicting img height: auto rule */
+      img, svg, video, canvas, audio, iframe, embed, object { display: block; vertical-align: middle; }
+      img, video { max-width: 100%; }
+      
+      /* Layout Utilities */
+      .relative { position: relative; }
+      .absolute { position: absolute; }
+      .fixed { position: fixed; }
+      .inset-0 { top: 0; right: 0; bottom: 0; left: 0; }
+      .top-0 { top: 0; }
+      .left-0 { left: 0; }
+      .w-full { width: 100%; }
+      .h-full { height: 100%; }
+      .h-screen { height: 100vh; }
+      .z-50 { z-index: 50; }
+      .z-10 { z-index: 10; }
+      .container { width: 100%; margin-right: auto; margin-left: auto; padding-right: 1rem; padding-left: 1rem; }
+      
+      /* Flexbox Utilities */
+      .flex { display: flex; }
+      .flex-col { flex-direction: column; }
+      .items-center { align-items: center; }
+      .justify-between { justify-content: space-between; }
+      .justify-center { justify-content: center; }
+      .justify-end { justify-content: flex-end; }
+      
+      /* Display Utilities */
+      .block { display: block; }
+      .hidden { display: none !important; }
+      
+      /* Object Fit */
+      .object-cover { object-fit: cover; }
+      
+      /* Text & Decoration */
+      a { text-decoration: none; color: inherit; }
+      .text-center { text-align: center; }
+      
+      /* Backgrounds */
+      .bg-white { background-color: #ffffff; }
+      
+      /* Visibility Fix for Root */
+      #root { opacity: 1 !important; display: flex; flex-direction: column; min-height: 100vh; }
+
+      /* Loading Spinner */
+      .initial-loader {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        width: 100%;
+        background-color: #ffffff;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 9999;
+      }
+      .spinner {
+        width: 50px;
+        height: 50px;
+        border: 5px solid #f3f3f3;
+        border-top: 5px solid #00B5A5; /* Teal */
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+      }
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+
+      /* Responsive Logic (Mirrors Tailwind 'md' breakpoint at 768px) */
+      @media (min-width: 768px) {
+        .md\:flex { display: flex !important; }
+        .md\:hidden { display: none !important; }
+        .md\:block { display: block !important; }
+        .md\:h-screen { height: 100vh; }
+        .container { max-width: 768px; }
+      }
+      @media (min-width: 1024px) {
+        .container { max-width: 1024px; }
+      }
+      @media (min-width: 1280px) {
+        .container { max-width: 1280px; }
+      }
+      
+      @media (max-width: 767px) {
+        .md\:flex { display: none !important; }
+        .md\:hidden { display: flex !important; }
+      }
+
+      /* Animation Placeholders */
+      .animate-on-scroll { opacity: 1; transition: opacity 0.5s; }
+      .animate-fade-in { animation: fadeIn 0.5s forwards; }
+      @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+      
+      /* Scrollbar */
+      .scrollbar-hide::-webkit-scrollbar { display: none; }
+      .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      // Polyfill process.env for browser compatibility
+      window.process = { env: { NODE_ENV: 'production' } };
+      
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: '#00B5A5',
+              secondary: '#0E2A47',
+            },
+            animation: {
+              'float': 'float 6s ease-in-out infinite',
+              'pulse-soft': 'pulse-soft 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            },
+            keyframes: {
+              float: {
+                '0%, 100%': { transform: 'translateY(0)' },
+                '50%': { transform: 'translateY(-10px)' },
+              },
+              'pulse-soft': {
+                '0%, 100%': { opacity: '1' },
+                '50%': { opacity: '.8' },
+              }
+            }
+          }
+        }
+      }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <script type="importmap">
+{
+  "imports": {
+    "react/": "https://esm.sh/react@18.2.0/",
+    "react": "https://esm.sh/react@18.2.0",
+    "react-dom/client": "https://esm.sh/react-dom@18.2.0/client",
+    "react-dom/": "https://esm.sh/react-dom@18.2.0/",
+    "react-dom": "https://esm.sh/react-dom@18.2.0",
+    "firebase/": "https://esm.sh/firebase@10.8.0/",
+    "recharts": "https://esm.sh/recharts@2.12.0",
+    "prop-types": "https://esm.sh/prop-types@15.8.1",
+    "@supabase/supabase-js": "https://esm.sh/@supabase/supabase-js@2.39.0",
+    "realm-web": "https://esm.sh/realm-web@2.0.0",
+    "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@4.2.1",
+    "vite": "https://esm.sh/vite@5.0.12",
+    "path": "https://esm.sh/path-browserify@1.0.1",
+    "url": "https://esm.sh/url@0.11.3",
+    "@google/genai": "https://esm.sh/@google/genai@0.0.10",
+    "react-helmet-async": "https://esm.sh/react-helmet-async@2.0.4"
+  }
+}
+</script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Hospital",
+      "name": "SilverLine Hospital",
+      "url": "https://silverlinehospitals.com",
+      "logo": "https://silverlinehospitals.com/assets/logo.svg",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "No: 3/332, Chennai National Highways, Palur",
+        "addressLocality": "Trichy",
+        "addressRegion": "TN",
+        "postalCode": "621216",
+        "addressCountry": "IN"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+91-96773-36097",
+        "contactType": "customer service"
+      },
+      "sameAs": [
+        "https://www.facebook.com/",
+        "https://twitter.com/",
+        "https://www.instagram.com/",
+        "https://www.linkedin.com/"
+      ]
+    }
+    </script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root">
+        <!-- Initial Loading State - Removed by React when hydration completes -->
+        <div class="initial-loader">
+            <div class="spinner"></div>
+        </div>
+    </div>
+    <svg width="0" height="0" style="position: absolute; width: 0; height: 0; overflow: hidden; pointer-events: none; visibility: hidden;">
+      <defs>
+        <clipPath id="island-shape" clipPathUnits="objectBoundingBox">
+          <path d="M 0.5, 0 
+                   C 0.1, 0, 0, 0.1, 0, 0.5 
+                   S 0.1, 1, 0.5, 1 
+                   S 0.9, 1, 1, 0.5 
+                   S 0.9, 0, 0.5, 0 
+                   Z" />
+        </clipPath>
+         <clipPath id="hero-carousel-shape" clipPathUnits="objectBoundingBox">
+          <path d="M 1,0.1 C 1,0.045 0.955,0 0.9,0 H 0.4 C 0.345,0 0.3,0.045 0.3,0.1 V 0.2 C 0.3,0.255 0.255,0.3 0.2,0.3 H 0.1 C 0.045,0.3 0,0.345 0,0.4 V 0.9 C 0,0.955 0.045,1 0.1,1 H 0.9 C 0.955,1 1,0.955 1,0.9 Z" />
+        </clipPath>
+      </defs>
+    </svg>
+
+    <script type="module" src="./index.tsx"></script>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>
