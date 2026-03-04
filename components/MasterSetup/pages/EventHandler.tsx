@@ -112,7 +112,7 @@ const ImageEditor: React.FC<{ configKey: string; readOnly: boolean; }> = ({ conf
                 readOnly={readOnly}
                 className="w-full px-3 py-2 mt-1 border border-gray-300 rounded-md shadow-sm focus:ring-[#00B5A5] focus:border-[#00B5A5] disabled:bg-gray-100 sm:text-sm"
                 disabled={readOnly}
-                placeholder="e.g., /assets/popup-image.jpg or data:image/..."
+                placeholder="e.g., /popup-image.jpg or data:image/..."
             />
         </div>
     );

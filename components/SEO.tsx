@@ -15,7 +15,7 @@ const SEO: React.FC<SEOProps> = ({
   description, 
   keywords = "hospital in trichy, best multispeciality hospital trichy, emergency care trichy, doctors in trichy",
   type = 'website',
-  image = 'https://silverlinehospitals.com/assets/logo.svg', // Fallback image
+  image = 'https://silverlinehospitals.com/logo.svg', // Fallback image
   schema
 }) => {
   const siteTitle = `${title} | SilverLine Hospital Trichy`;

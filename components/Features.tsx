@@ -145,7 +145,7 @@ const Features: React.FC = () => {
                             <div className="w-full h-full overflow-hidden rounded-[2.5rem]">
                                 <EditableImage
                                     configKey="internationalPatients.mainImage"
-                                    defaultValue="/assets/Standby/medical-tech-intl.jpg"
+                                    defaultValue="/Standby/medical-tech-intl.jpg"
                                     alt="SilverLine Global Healthcare Excellence"
                                     className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
                                 />
@@ -186,7 +186,7 @@ const Features: React.FC = () => {
                         <div className="relative overflow-hidden shadow-sm">
                             <EditableImage
                                 configKey="internationalPatients.mainImage"
-                                defaultValue="/assets/Standby/medical-tech-intl.jpg"
+                                defaultValue="/Standby/medical-tech-intl.jpg"
                                 alt="SilverLine Healthcare"
                                 className="w-full h-80 object-cover"
                             />

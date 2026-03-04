@@ -93,7 +93,7 @@ const VideoSection: React.FC = () => {
                                 onClick={togglePlay}
                                 onEnded={() => setIsPlaying(false)}
                             >
-                                <source src="/assets/SLH AD 50 SEC_1080P.mp4" type="video/mp4" />
+                                <source src="/SLH AD 50 SEC_1080P.mp4" type="video/mp4" />
                                 Your browser does not support the video tag.
                             </video>
                             
