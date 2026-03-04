@@ -20,6 +20,7 @@ const PageHero: React.FC<PageHeroProps> = ({ title, subtitle, backgroundImage, a
         configKey={backgroundImage} 
         alt={title} 
         className="absolute inset-0 w-full h-full" 
+        priority={true}
       />
       <div className="absolute inset-0 bg-black/60"></div>
       <div className={`relative ${alignmentClass} animate-on-scroll fade-in-up p-4 max-w-4xl w-full mx-auto px-4 sm:px-6 lg:px-8`}>

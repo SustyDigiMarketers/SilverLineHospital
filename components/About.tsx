@@ -37,6 +37,7 @@ const About: React.FC = () => {
                 configKey="about.heroCarouselSlides[0].image"
                 alt={heroContent.title}
                 className="w-full h-full object-cover"
+                priority={true}
             />
             <div className="absolute inset-0 bg-black/40"></div>
         </div>

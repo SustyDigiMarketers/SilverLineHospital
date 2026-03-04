@@ -36,6 +36,7 @@ const SpecialtiesPage: React.FC = () => {
                     configKey="specialtiesPage.heroImage"
                     alt={content.title || 'Our Specialties'}
                     className="absolute inset-0 w-full h-full object-cover"
+                    priority={true}
                 />
                 <div className="absolute inset-0 bg-black/60"></div>
                 <div className="relative text-left animate-on-scroll fade-in-up p-4 container mx-auto max-w-4xl">

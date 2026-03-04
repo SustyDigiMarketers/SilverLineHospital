@@ -21,6 +21,7 @@ interface EditableImageProps {
   alt: string;
   style?: React.CSSProperties;
   defaultValue?: string;
+  priority?: boolean;
 }
 
 const EditableImage: React.FC<EditableImageProps> = ({
@@ -29,6 +30,7 @@ const EditableImage: React.FC<EditableImageProps> = ({
   alt,
   style,
   defaultValue = '',
+  priority = false,
 }) => {
   const { isMasterMode, config, updateConfig } = useContext(MasterSetupContext);
 
@@ -80,8 +82,9 @@ const EditableImage: React.FC<EditableImageProps> = ({
       <img
         src={src}
         alt={alt}
-        className="w-full h-full object-cover" // Ensure image fills container
-        loading="lazy"
+        className="w-full h-full object-cover" 
+        loading={priority ? "eager" : "lazy"}
+        {...(priority ? { fetchpriority: "high" } : {})}
       />
       <div
         className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 cursor-pointer"
