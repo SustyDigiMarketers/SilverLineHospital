@@ -1,0 +1,24 @@
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import App from './App';
+import { MasterSetupProvider } from './components/MasterSetup/MasterSetupProvider';
+import ErrorBoundary from './components/ErrorBoundary';
+import { HelmetProvider } from 'react-helmet-async';
+
+const rootElement = document.getElementById('root');
+if (!rootElement) {
+  throw new Error("Could not find root element to mount to");
+}
+
+const root = ReactDOM.createRoot(rootElement);
+root.render(
+  <React.StrictMode>
+    <ErrorBoundary>
+      <HelmetProvider>
+        <MasterSetupProvider>
+          <App />
+        </MasterSetupProvider>
+      </HelmetProvider>
+    </ErrorBoundary>
+  </React.StrictMode>
+);

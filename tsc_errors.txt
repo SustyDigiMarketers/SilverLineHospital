@@ -1,0 +1,13 @@
+﻿App.tsx(217,74): error TS2322: Type '{ doctorId: string; onBookAppointmentClick: () => void; }' is not assignable to type 'IntrinsicAttributes & { doctorId?: string | undefined; }'.
+  Property 'onBookAppointmentClick' does not exist on type 'IntrinsicAttributes & { doctorId?: string | undefined; }'.
+components/Features.tsx(2,34): error TS2307: Cannot find module 'framer-motion' or its corresponding type declarations.
+components/WhyChooseUs.tsx(2,34): error TS2307: Cannot find module 'framer-motion' or its corresponding type declarations.
+pages/BlogPage.tsx(8,8): error TS2739: Type '{ title: string; }' is missing the following properties from type 'PageHeroProps': subtitle, backgroundImage
+pages/CareerPage.tsx(7,8): error TS2739: Type '{ title: string; }' is missing the following properties from type 'PageHeroProps': subtitle, backgroundImage
+pages/GalleryPage.tsx(8,8): error TS2739: Type '{ title: string; }' is missing the following properties from type 'PageHeroProps': subtitle, backgroundImage
+pages/InternationalPatientPage.tsx(7,8): error TS2739: Type '{ title: string; }' is missing the following properties from type 'PageHeroProps': subtitle, backgroundImage
+pages/SpecialtiesPage.tsx(3,27): error TS2307: Cannot find module './MasterSetup/EditableImage' or its corresponding type declarations.
+pages/SpecialtiesPage.tsx(4,26): error TS2307: Cannot find module './MasterSetup/EditableText' or its corresponding type declarations.
+pages/SpecialtiesPage.tsx(5,36): error TS2307: Cannot find module './MasterSetup/MasterSetupProvider' or its corresponding type declarations.
+pages/SpecialtiesPage.tsx(6,26): error TS2307: Cannot find module './Testimonials' or its corresponding type declarations.
+pages/SpecialtiesPage.tsx(21,13): error TS2339: Property 'config' does not exist on type 'unknown'.
