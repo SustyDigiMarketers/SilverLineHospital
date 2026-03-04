@@ -83,6 +83,7 @@ const Hero: React.FC = () => {
                     configKey={`hero.slides[${index}].image`}
                     alt={slide.headline}
                     className="w-full h-full object-cover"
+                    priority={true}
                     style={{ 
                         width: '100%',
                         height: '100%',
