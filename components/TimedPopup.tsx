@@ -83,13 +83,13 @@ const TimedPopup: React.FC = () => {
 
   return (
     <div
-      className="fixed bottom-6 right-6 z-[60] w-full max-w-[480px] pointer-events-none"
+      className="fixed md:bottom-6 md:right-6 bottom-24 left-1/2 -translate-x-1/2 md:translate-x-0 md:left-auto z-[60] w-[90vw] md:w-full max-w-[480px] pointer-events-none origin-bottom"
       role="dialog"
       aria-modal="false"
       aria-labelledby="popup-title"
     >
       <div
-        className={`relative bg-white rounded-2xl shadow-2xl overflow-hidden transform pointer-events-auto flex flex-row ${isVisible ? 'animate-modal-enter' : 'animate-modal-exit'}`}
+        className={`relative bg-white rounded-2xl shadow-2xl overflow-hidden transform pointer-events-auto flex flex-row scale-75 md:scale-100 ${isVisible ? 'animate-modal-enter' : 'animate-modal-exit'}`}
         onClick={(e) => e.stopPropagation()}
       >
         {/* Horizontal Layout */}

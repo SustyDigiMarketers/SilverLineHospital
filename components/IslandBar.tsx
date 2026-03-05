@@ -54,26 +54,22 @@ const IslandBar: React.FC = () => {
   return (
     <section className="relative z-20">
       <div className="container mx-auto px-4 relative -mt-10 animate-on-scroll fade-in-up">
-        <div className="max-w-5xl mx-auto flex flex-col md:flex-row gap-3 md:gap-0 md:bg-white/90 md:backdrop-blur-xl md:rounded-full md:shadow-[0_20px_50px_rgba(0,0,0,0.1)] md:overflow-hidden transition-all duration-500 md:hover:shadow-[0_25px_60px_rgba(0,0,0,0.15)] md:border md:border-white/50">
+        <div className="max-w-5xl mx-auto bg-white/90 backdrop-blur-xl rounded-full shadow-[0_20px_50px_rgba(0,0,0,0.1)] flex flex-row overflow-hidden transition-all duration-500 hover:shadow-[0_25px_60px_rgba(0,0,0,0.15)] border border-white/50">
           {navItems.map((item, index) => (
             <a
               key={index}
               href={item.href}
               onClick={(e) => handleNavClick(e, item.href)}
-              className={`flex-1 py-3.5 md:py-6 flex items-center justify-center gap-4 transition-all duration-300 group ${item.hoverClass} 
-                bg-white/90 backdrop-blur-lg md:bg-transparent md:backdrop-blur-none
-                rounded-full md:rounded-none
-                shadow-lg md:shadow-none
-                md:border-r border-gray-100/10 md:border-gray-100/50 last:border-0`}
+              className={`flex-1 py-3 md:py-6 flex items-center justify-center gap-1.5 md:gap-4 transition-all duration-300 group ${item.hoverClass} border-r border-gray-100/50 last:border-0`}
             >
-              <div className={`p-2 rounded-xl md:p-2.5 transition-all duration-500 group-hover:scale-110 group-hover:rotate-3 ${item.iconClass}`}>
-                {React.cloneElement(item.icon as React.ReactElement, { className: 'w-5 h-5 md:w-6 md:h-6 transition-colors duration-300' })}
+              <div className={`p-1.5 md:p-2.5 rounded-lg md:xl transition-all duration-500 group-hover:scale-110 group-hover:rotate-3 ${item.iconClass}`}>
+                {React.cloneElement(item.icon as React.ReactElement, { className: 'w-4 h-4 md:w-6 md:h-6 transition-colors duration-300' })}
               </div>
               <EditableText
                 as="span"
                 configKey={item.titleKey}
                 defaultValue={item.defaultTitle}
-                className={`text-[#0E2A47] group-hover:${item.activeColor} text-base md:text-xl font-bold tracking-tight transition-colors duration-300`}
+                className={`text-[#0E2A47] group-hover:${item.activeColor} text-[10px] md:text-xl font-bold tracking-tight transition-colors duration-300 whitespace-nowrap`}
               />
             </a>
           ))}
