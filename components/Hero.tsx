@@ -63,12 +63,12 @@ const Hero: React.FC = () => {
     <section 
       id="home" 
       style={{ position: 'relative', overflow: 'hidden' }} 
-      className="relative w-full overflow-hidden h-[350px] md:h-[500px]"
+      className="relative w-full overflow-hidden h-[250px] md:h-[500px]"
       aria-roledescription="carousel"
       aria-label="Promotional content"
     >
       <div className="absolute inset-0 w-full h-full">
-        {slides.map((slide: any, index: number) => (
+        {slides.map((slide: Record<string, any>, index: number) => (
           <div 
             key={index}
             className={`absolute inset-0 w-full h-full transition-opacity duration-1000 ease-in-out ${index === currentIndex ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}
@@ -102,7 +102,7 @@ const Hero: React.FC = () => {
       
       {/* Dot Indicators */}
       {slides.length > 1 && (
-        <div className="absolute bottom-4 md:bottom-12 left-8 md:left-1/2 md:-translate-x-1/2 flex space-x-4 z-30">
+        <div className="absolute bottom-4 md:bottom-12 left-8 md:left-1/2 md:-translate-x-1/2 hidden md:flex space-x-4 z-30">
             {slides.map((_: any, slideIndex: number) => (
             <button
                 key={slideIndex}
