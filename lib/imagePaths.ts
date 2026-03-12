@@ -10,19 +10,19 @@ export const imagePaths = {
     favicon: '/favicon.svg',
   },
   hero: {
-    slide1: '/Hero/hero1.jpg',
-    slide2: '/Hero/hero2.jpg',
-    slide3: '/Hero/hero3.jpg',
+    slide1: '/Hero/Home1.jpg',
+    slide2: '/Hero/Home2.jpg',
+    slide3: '/Hero/Home3.jpg',
   },
   about: {
-    hero1: '/Hero/about1.jpg',
-    hero2: '/Hero/about2.jpg',
-    hero3: '/Hero/about3.jpg',
+    hero1: '/Hero/About.jpg',
+    hero2: '/Hero/Home1.jpg',
+    hero3: '/Hero/Home2.jpg',
     dentist: '/Standby/dentist.jpg',
     carousel: [
-      '/Hero/about1.jpg',
-      '/Hero/about2.jpg',
-      '/Hero/about3.jpg',
+      '/Hero/About.jpg',
+      '/Hero/Home1.jpg',
+      '/Hero/Home2.jpg',
     ],
     team: [
       '/Doctor/senthilkumar.jpg',
@@ -32,20 +32,20 @@ export const imagePaths = {
     sideImage: '/Standby/why-choose-us.jpg',
   },
   contact: {
-    hero: '/Hero/contact-hero.jpg',
+    hero: '/Hero/Contact.jpg',
   },
   packages: {
-    hero: '/Hero/packages-hero.jpg',
+    hero: '/Hero/Package.jpg',
   },
   career: {
-    hero: '/Hero/career-hero.jpg',
+    hero: '/Hero/Career.jpg',
   },
   statsBar: {
     bg: '/Standby/stats-bg.jpg',
   },
   specialties: {
     promo: '/specialities/promo.jpg',
-    pageHero: '/Hero/specialties-hero.jpg',
+    pageHero: '/Hero/Specialities.jpg',
     
     cardiologyHero: '/Hero/cardiology-hero.jpg',
     cardiologyGallery: [
@@ -176,42 +176,67 @@ export const imagePaths = {
     ],
     gynaecologyHero: '/Hero/specialties-hero.jpg', 
     icons: {
-      generalMedicine: '/Icons/1.png',
-      orthopedics: '/Icons/2.png',
-      ent: '/Icons/3.png',
-      pulmonology: '/Icons/4.png',
-      surgicalGastroenterology: '/Icons/5.png',
-      cardiology: '/Icons/6.png',
-      surgicalOncology: '/Icons/7.png',
-      criticalCare: '/Icons/8.png',
-      cardiothoracicSurgery: '/Icons/9.png',
-      neurology: '/Icons/10.png',
-      nephrology: '/Icons/11.png',
-      medicalOncology: '/Icons/12.png',
-      medicalGastroenterology: '/Icons/13.png',
-      generalSurgery: '/Icons/14.png',
-      radiationOncology: '/Icons/15.png',
-      neuroSurgery: '/Icons/16.png',
-      transplantSurgery: '/Icons/17.png',
-      boneMarrowTransplant: '/Icons/18.png',
-      vascularSurgery: '/Icons/19.png',
-      gynaecology: '/Icons/20.png',
-      roboticSurgery: '/Icons/21.png',
-      painPalliativeCare: '/Icons/22.png',
-      urology: '/Icons/22.png', // Reusing 22 since only 22 exist
+      generalMedicine: '/Icons/1.png',      // Position 1
+      generalSurgery: '/Icons/2.png',        // Position 2
+      orthopedics: '/Icons/3.png',           // Position 3
+      criticalCare: '/Icons/4.png',          // Position 4
+      medicalOncology: '/Icons/5.png',       // Position 5
+      surgicalOncology: '/Icons/6.png',      // Position 6
+      radiationOncology: '/Icons/7.png',     // Position 7
+      medicalGastroenterology: '/Icons/8.png', // Position 8
+      surgicalGastroenterology: '/Icons/9.png', // Position 9
+      nephrology: '/Icons/10.png',           // Position 10
+      urology: '/Icons/11.png',              // Position 11
+      cardiology: '/Icons/12.png',           // Position 12
+      cardiothoracicSurgery: '/Icons/13.png', // Position 13
+      neurology: '/Icons/14.png',            // Position 14
+      neuroSurgery: '/Icons/15.png',         // Position 15
+      pulmonology: '/Icons/16.png',          // Position 16
+      vascularSurgery: '/Icons/17.png',      // Position 17
+      ent: '/Icons/18.png',                  // Position 18
+      gynaecology: '/Icons/19.png',          // Position 19
+      roboticSurgery: '/Icons/20.png',       // Position 20
+      transplantSurgery: '/Icons/21.png',    // Position 21
+      boneMarrowTransplant: '/Icons/22.png', // Position 22
+      painPalliativeCare: '/Icons/23.png',   // Position 23
     }
   },
   doctors: {
-    senthilkumar: '/Doctor/senthilkumar.jpg',
-    hemalatha: '/Doctor/hemalatha.jpg',
-    sivapragash: '/Doctor/sivapragash.jpg',
-    shankar: '/Doctor/shankar.jpg',
-    rahul: '/Doctor/rahul.jpg',
-    khanna: '/Doctor/khanna.jpg',
-    kumar: '/Doctor/kumar.jpg',
-    nirmal: '/Doctor/nirmal.jpg',
+    senthilkumar: '/Doctor/Dr.G.Senthilkumar.jpg',
+    hemalatha: '/Doctor/Dr.G.Hemalatha.jpg',
+    sivapragash: '/Doctor/Dr.S.Sivapragash.jpg',
+    d1: '/Doctor/Dr.G.Senthilkumar.jpg',
+    d2: '/Doctor/Dr.G.Hemalatha.jpg',
+    d3: '/Doctor/Dr.S.Sivapragash.jpg',
+    d4: '/Doctor/Dr.S.Shankar.jpg',
+    d5: '/Doctor/Dr.M.G.Rahul.jpg',
+    d6: '/Doctor/Dr.R.K.VinodhKhanna.jpg',
+    d7: '/Doctor/Dr.S.Vishnukumar.jpg',
+    d8: '/Doctor/Dr.NaveenSundaram.jpg',
+    d9: '/Doctor/Dr.Aravind.K.jpg',
+    d10: '/Doctor/Dr.K.Sathyasagar.jpg',
+    d11: '/Doctor/Dr.I.Devarajan.jpg',
+    d12: '/Doctor/Dr.R.Bhavidra.jpg',
+    d13: '/Doctor/Dr.K.Narendran.jpg',
+    d14: '/Doctor/Dr.P.Ramamoorthi.jpg',
+    d15: '/Doctor/Dr.DineshKumar.R.jpg',
+    d16: '/Doctor/Dr.PrakashAsokan.jpg',
+    d17: '/Doctor/Dr.Samynathan.G.jpg',
+    d18: '/Doctor/Dr.Shanmuganathan.B.jpg',
+    d19: '/Doctor/Dr.SenthilKumar.S.jpg',
+    d20: '/Doctor/Dr.SridharSinnakalai.jpg',
+    d21: '/Doctor/Dr.Ragaselvi.S.jpg',
+    d22: '/Doctor/Dr.RajThilak.R.jpg',
+    d23: '/Doctor/Dr.Priyadharshini.S.jpg',
+    d24: '/Doctor/Dr.S.Thayumanavan.jpg',
+    d25: '/Doctor/Dr.M.Nirmal.jpg',
+    d26: '/Doctor/Dr.Anitha.K.jpg',
+    d27: '/Doctor/Dr.VijayPradap.R.jpg',
+    d28: '/Doctor/Dr.MohammedImranKhan.A.jpg',
+    d29: '/Doctor/Dr.Divya.M.jpg',
   },
   blog: [
+    '/Hero/Blogs.jpg',
     '/Standby/blog-1.jpg',
     '/Standby/blog-2.jpg',
     '/Standby/blog-3.jpg',

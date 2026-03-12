@@ -30,29 +30,14 @@ const SpecialtiesPage: React.FC = () => {
         <>
             {/* Full-width Hero Section at the top */}
             <section 
-                className="relative h-[350px] md:h-[500px] flex items-center justify-center text-white overflow-hidden pt-24"
+                className="relative h-[200px] md:h-[450px] flex items-center justify-center text-white overflow-hidden"
             >
                 <EditableImage
                     configKey="specialtiesPage.heroImage"
                     alt={content.title || 'Our Specialties'}
-                    className="absolute inset-0 w-full h-full object-cover"
+                    className="absolute inset-0 w-full h-full object-fill"
                     priority={true}
                 />
-                <div className="absolute inset-0 bg-black/60"></div>
-                <div className="relative text-left animate-on-scroll fade-in-up p-4 container mx-auto max-w-4xl">
-                    <EditableText
-                        as="h1"
-                        configKey="specialtiesPage.title"
-                        defaultValue={content.title}
-                        className="text-5xl md:text-6xl font-bold"
-                    />
-                    <EditableText
-                        as="p"
-                        configKey="specialtiesPage.subtitle"
-                        defaultValue={content.subtitle}
-                        className="mt-4 text-lg text-gray-200 max-w-3xl"
-                    />
-                </div>
             </section>
 
             {/* Specialties Grid Section */}

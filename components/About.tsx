@@ -30,31 +30,15 @@ const About: React.FC = () => {
     <div id="aboutus" className="relative">
       {/* 1. SINGLE IMAGE HERO SECTION */}
       <section 
-        className="relative h-[350px] md:h-[500px] flex items-center justify-center text-white overflow-hidden"
+        className="relative h-[200px] md:h-[450px] flex items-center justify-center text-white overflow-hidden"
       >
         <div className="absolute inset-0 w-full h-full">
             <EditableImage
                 configKey="about.heroCarouselSlides[0].image"
                 alt={heroContent.title}
-                className="w-full h-full object-cover"
+                className="w-full h-full object-fill"
                 priority={true}
             />
-            <div className="absolute inset-0 bg-black/40"></div>
-        </div>
-        
-        <div className="relative text-center z-20 animate-on-scroll fade-in-up p-4">
-          <EditableText
-            as="h1"
-            configKey="about.heroCarouselSlides[0].title"
-            defaultValue={heroContent.title || 'About Us'}
-            className="text-5xl md:text-7xl font-bold tracking-tight"
-          />
-          <EditableText
-            as="p"
-            configKey="about.heroCarouselSlides[0].subtitle"
-            defaultValue={heroContent.subtitle || ''}
-            className="mt-6 text-lg md:text-xl text-gray-100 max-w-2xl mx-auto drop-shadow-lg"
-          />
         </div>
       </section>
 

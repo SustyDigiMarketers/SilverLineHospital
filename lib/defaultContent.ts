@@ -4,115 +4,496 @@ import type { Doctor } from './doctorsData';
 
 const doctorList: Doctor[] = [
   {
-    id: 'g-senthilkumar',
-    name: 'Dr. G. Senthilkumar',
-    specialty: 'Surgical Oncologist',
-    image: 'imagePaths.doctors.senthilkumar',
-    shortBio: 'Dr. G. Senthilkumar is a distinguished Surgical Oncologist, holding qualifications of MS, DNB, and MCh in Surgical Oncology.',
-    fullBio: 'With over 15 years of experience in the field, Dr. G. Senthilkumar has pioneered several minimally invasive surgical techniques for cancer treatment in the region. He is an active member of the National Oncology Association and has published numerous papers on advanced surgical oncology. His patient-centric approach ensures that each individual receives a tailored treatment plan designed for the best possible outcome.',
-    philosophy: 'Dedicated to providing comprehensive and compassionate cancer care through advanced surgical techniques and a patient-first approach.',
-    expertise: ['Minimally Invasive Cancer Surgery', 'Robotic Surgery', 'Head and Neck Oncology', 'Gastrointestinal Cancer'],
-    social: {
-      linkedin: 'https://www.linkedin.com/',
-      twitter: 'https://twitter.com/',
+    "id": "g-senthilkumar",
+    "name": "Dr. G. Senthilkumar",
+    "specialty": "Surgical Oncologist",
+    "image": "imagePaths.doctors.d1",
+    "shortBio": "Dr. G. Senthilkumar is a specialist in Surgical Oncology with qualifications MS., DNB., MCh (Surgical Oncology).",
+    "fullBio": "Dr. G. Senthilkumar is highly experienced in Surgical Oncology. He holds MS., DNB., MCh (Surgical Oncology) credentials and is dedicated to providing the best patient care.",
+    "philosophy": "Committed to delivering excellence in healthcare with compassion and precision.",
+    "expertise": [
+      "Surgical Oncology",
+      "Surgical Oncologist"
+    ],
+    "social": {
+      "linkedin": "https://www.linkedin.com/",
+      "twitter": "https://twitter.com/"
     }
   },
   {
-    id: 'g-hemalatha',
-    name: 'Dr. G. Hemalatha',
-    specialty: 'Onco Pathologist',
-    image: 'imagePaths.doctors.hemalatha',
-    shortBio: 'Dr. G. Hemalatha is an expert Onco Pathologist specializing in the Pathology department. Her qualification is MD in Pathology.',
-    fullBio: 'Dr. G. Hemalatha leads our pathology lab with a focus on molecular diagnostics and personalized medicine. Her research in tumor microenvironments has been instrumental in developing more effective, targeted therapies. She works closely with our oncology team to provide precise diagnoses that form the foundation of every treatment strategy.',
-    philosophy: 'Committed to accurate diagnosis as the cornerstone of effective treatment, utilizing meticulous pathological analysis to guide patient care.',
-    expertise: ['Molecular Diagnostics', 'Tumor Pathology', 'Hematopathology', 'Cytopathology'],
-    social: {
-      linkedin: 'https://www.linkedin.com/',
-      twitter: 'https://twitter.com/',
+    "id": "g-hemalatha",
+    "name": "Dr. G. Hemalatha",
+    "specialty": "Onco Pathologist",
+    "image": "imagePaths.doctors.d2",
+    "shortBio": "Dr. G. Hemalatha is a specialist in Pathology with qualifications MD (Pathology).",
+    "fullBio": "Dr. G. Hemalatha is highly experienced in Pathology. He holds MD (Pathology) credentials and is dedicated to providing the best patient care.",
+    "philosophy": "Committed to delivering excellence in healthcare with compassion and precision.",
+    "expertise": [
+      "Pathology",
+      "Onco Pathologist"
+    ],
+    "social": {
+      "linkedin": "https://www.linkedin.com/",
+      "twitter": "https://twitter.com/"
     }
   },
   {
-    id: 's-sivapragash',
-    name: 'Dr. S. Sivapragash',
-    specialty: 'Surgical Oncologist',
-    image: 'imagePaths.doctors.sivapragash',
-    shortBio: 'Dr. S. Sivapragash is a highly skilled Surgical Oncologist with qualifications including MS, MCh (Surgical Oncology), and FMAS.',
-    fullBio: 'Dr. S. Sivapragash is renowned for his expertise in complex cancer surgeries. He holds fellowships in minimal access surgery and is a trainer for advanced laparoscopic procedures. His approach integrates cutting-edge surgical techniques with a deep commitment to patient recovery and quality of life post-treatment.',
-    philosophy: 'Believes in combining surgical precision with a holistic view of patient well-being to achieve the best possible outcomes in cancer treatment.',
-    expertise: ['Laparoscopic Oncology Surgery', 'Breast Cancer Surgery', 'Thoracic Oncology', 'Soft Tissue Sarcomas'],
-    social: {
-      linkedin: 'https://www.linkedin.com/',
-      twitter: 'https://twitter.com/',
+    "id": "s-sivapragash",
+    "name": "Dr. S. Sivapragash",
+    "specialty": "Surgical Oncologist",
+    "image": "imagePaths.doctors.d3",
+    "shortBio": "Dr. S. Sivapragash is a specialist in Surgical Oncology with qualifications MS., MCh (Surgical Oncology)., FMAS.",
+    "fullBio": "Dr. S. Sivapragash is highly experienced in Surgical Oncology. He holds MS., MCh (Surgical Oncology)., FMAS credentials and is dedicated to providing the best patient care.",
+    "philosophy": "Committed to delivering excellence in healthcare with compassion and precision.",
+    "expertise": [
+      "Surgical Oncology",
+      "Surgical Oncologist"
+    ],
+    "social": {
+      "linkedin": "https://www.linkedin.com/",
+      "twitter": "https://twitter.com/"
     }
   },
   {
-    id: 's-shankar',
-    name: 'Dr. S. Shankar',
-    specialty: 'Surgical Gastroenterologist',
-    image: 'imagePaths.doctors.shankar',
-    shortBio: 'Dr. S. Shankar specializes in Surgical Gastroenterology, focusing on the liver, pancreas, and gastrointestinal tract. Qualifications: MS, MCh (SGE).',
-    fullBio: 'Dr. S. Shankar is a leading expert in hepato-pancreato-biliary (HPB) surgery. He has performed over 500 complex liver and pancreas resections and is a pioneer in liver transplant procedures in our hospital. His dedication to research keeps him at the forefront of gastroenterological surgery.',
-    philosophy: 'Striving to restore digestive health through advanced surgical solutions, tailored to each patient\'s unique condition and needs.',
-    expertise: ['Liver and Pancreas Surgery', 'Advanced Laparoscopic GI Surgery', 'Bariatric Surgery', 'Endoscopic Procedures'],
-    social: {
-      linkedin: 'https://www.linkedin.com/',
-      twitter: 'https://twitter.com/',
-    }
-  },
-   {
-    id: 'mg-rahul',
-    name: 'Dr. M.G. Rahul',
-    specialty: 'Radiation Oncologist',
-    image: 'imagePaths.doctors.rahul',
-    shortBio: 'Dr. M.G. Rahul is a Radiation Oncologist with expertise in radiation therapy for cancer treatment. His qualifications are DMRT, DNB, and CCEPC.',
-    fullBio: 'Dr. M.G. Rahul combines technical expertise with a compassionate approach to patient care. He specializes in advanced radiation techniques like IMRT, IGRT, and Stereotactic Radiosurgery, which allow for highly precise tumor targeting while minimizing side effects. He is also actively involved in clinical trials for new radiation therapies.',
-    philosophy: 'Utilizing cutting-edge radiation technology to target cancer with precision, while minimizing impact on surrounding healthy tissue.',
-    expertise: ['Stereotactic Radiosurgery (SRS)', 'IMRT and IGRT', 'Brachytherapy', 'Palliative Radiation Therapy'],
-    social: {
-      linkedin: 'https://www.linkedin.com/',
-      twitter: 'https://twitter.com/',
+    "id": "s-shankar",
+    "name": "Dr. S. Shankar",
+    "specialty": "Surgical Gastroenterologist",
+    "image": "imagePaths.doctors.d4",
+    "shortBio": "Dr. S. Shankar is a specialist in Surgical Gastroenterology with qualifications MS., MCh (SGE).",
+    "fullBio": "Dr. S. Shankar is highly experienced in Surgical Gastroenterology. He holds MS., MCh (SGE) credentials and is dedicated to providing the best patient care.",
+    "philosophy": "Committed to delivering excellence in healthcare with compassion and precision.",
+    "expertise": [
+      "Surgical Gastroenterology",
+      "Surgical Gastroenterologist"
+    ],
+    "social": {
+      "linkedin": "https://www.linkedin.com/",
+      "twitter": "https://twitter.com/"
     }
   },
   {
-    id: 'rk-vinodh-khanna',
-    name: 'Dr. R.K. Vinodh Khanna',
-    specialty: 'Consultant Urologist, Andrologist, Transplant Surgeon',
-    image: 'imagePaths.doctors.khanna',
-    shortBio: 'Dr. R.K. Vinodh Khanna is a consultant in the Urology department with qualifications of MS, DNB, and DNB (URO).',
-    fullBio: 'Dr. R.K. Vinodh Khanna is a versatile surgeon with extensive experience in urology, andrology, and renal transplant surgery. He is known for his expertise in robotic-assisted prostatectomy and complex reconstructive urology. His holistic approach addresses not just the disease but also the patient\'s overall quality of life.',
-    philosophy: 'Providing comprehensive care for urological conditions with a focus on patient comfort, advanced surgical techniques, and long-term health.',
-    expertise: ['Robotic Urology Surgery', 'Renal Transplant', 'Andrology and Male Infertility', 'Reconstructive Urology'],
-    social: {
-      linkedin: 'https://www.linkedin.com/',
-      twitter: 'https://twitter.com/',
+    "id": "m-g-rahul",
+    "name": "Dr. M.G. Rahul",
+    "specialty": "Radiation Oncologist",
+    "image": "imagePaths.doctors.d5",
+    "shortBio": "Dr. M.G. Rahul is a specialist in Radiation Oncology with qualifications DMRT., DNB. CCEPC.",
+    "fullBio": "Dr. M.G. Rahul is highly experienced in Radiation Oncology. He holds DMRT., DNB. CCEPC credentials and is dedicated to providing the best patient care.",
+    "philosophy": "Committed to delivering excellence in healthcare with compassion and precision.",
+    "expertise": [
+      "Radiation Oncology",
+      "Radiation Oncologist"
+    ],
+    "social": {
+      "linkedin": "https://www.linkedin.com/",
+      "twitter": "https://twitter.com/"
     }
   },
   {
-    id: 's-vishnu-kumar',
-    name: 'Dr. S. Vishnu Kumar',
-    specialty: 'Laparoscopic & General Surgeon',
-    image: 'imagePaths.doctors.kumar',
-    shortBio: 'Dr. S. Vishnu Kumar is a specialist in General & Laparoscopic Surgery. Qualifications include MS, FMAS, FALS, FIAGES, and Dip.Lap.Surgery.',
-    fullBio: 'Dr. S. Vishnu Kumar is a master of minimally invasive techniques, holding multiple fellowships in laparoscopic surgery. He handles a wide range of procedures from gallbladder and hernia repairs to complex abdominal surgeries. Patients appreciate his clear communication and the faster recovery times associated with his surgical approach.',
-    philosophy: 'Championing minimally invasive surgery to ensure faster recovery, less pain, and better outcomes for patients requiring surgical intervention.',
-    expertise: ['Advanced Laparoscopic Surgery', 'Hernia Repair', 'Gallbladder Surgery', 'Trauma Surgery'],
-    social: {
-      linkedin: 'https://www.linkedin.com/',
-      twitter: 'https://twitter.com/',
+    "id": "r-k-vinodh-khanna",
+    "name": "Dr. R.K. Vinodh Khanna",
+    "specialty": "Consultant Urologist, Andrologist, Transplant Surgeon",
+    "image": "imagePaths.doctors.d6",
+    "shortBio": "Dr. R.K. Vinodh Khanna is a specialist in Urology with qualifications MS., DNB., DNB (Uro).",
+    "fullBio": "Dr. R.K. Vinodh Khanna is highly experienced in Urology. He holds MS., DNB., DNB (Uro) credentials and is dedicated to providing the best patient care.",
+    "philosophy": "Committed to delivering excellence in healthcare with compassion and precision.",
+    "expertise": [
+      "Urology",
+      "Consultant Urologist, Andrologist, Transplant Surgeon"
+    ],
+    "social": {
+      "linkedin": "https://www.linkedin.com/",
+      "twitter": "https://twitter.com/"
     }
   },
   {
-    id: 'm-nirmal',
-    name: 'Dr. M. Nirmal',
-    specialty: 'Fellowship in Orthoscopic & Sports Medicine',
-    image: 'imagePaths.doctors.nirmal',
-    shortBio: 'Dr. M. Nirmal specializes in Orthopaedics & Trauma. His qualifications are MS (Ortho) and DNB (Ortho).',
-    fullBio: 'Dr. M. Nirmal is a leading orthopedic surgeon with a special focus on sports medicine and arthroscopic surgery. He has worked with professional athletes and is an expert in treating ligament tears, joint instability, and other sports-related injuries. His goal is to get patients back to their active lifestyles as quickly and safely as possible.',
-    philosophy: 'Dedicated to restoring mobility and function. My goal is to help patients overcome musculoskeletal injuries and conditions effectively.',
-    expertise: ['Arthroscopic Knee & Shoulder Surgery', 'Sports Injury Management', 'Joint Replacement', 'Complex Trauma Surgery'],
-    social: {
-      linkedin: 'https://www.linkedin.com/',
-      twitter: 'https://twitter.com/',
+    "id": "s-vishnukumar",
+    "name": "Dr. S. Vishnukumar",
+    "specialty": "Laparoscopic & General Surgeon",
+    "image": "imagePaths.doctors.d7",
+    "shortBio": "Dr. S. Vishnukumar is a specialist in General & Laparoscopic Surgery with qualifications MS., FMAS., FALS., FIAGES., Dip.Lap.Surgery.",
+    "fullBio": "Dr. S. Vishnukumar is highly experienced in General & Laparoscopic Surgery. He holds MS., FMAS., FALS., FIAGES., Dip.Lap.Surgery credentials and is dedicated to providing the best patient care.",
+    "philosophy": "Committed to delivering excellence in healthcare with compassion and precision.",
+    "expertise": [
+      "General & Laparoscopic Surgery",
+      "Laparoscopic & General Surgeon"
+    ],
+    "social": {
+      "linkedin": "https://www.linkedin.com/",
+      "twitter": "https://twitter.com/"
+    }
+  },
+  {
+    "id": "naveen-sundaram",
+    "name": "Dr. Naveen Sundaram",
+    "specialty": "Consultant Emergency & Critical Care Medicine",
+    "image": "imagePaths.doctors.d8",
+    "shortBio": "Dr. Naveen Sundaram is a specialist in Emergency & Critical Care Medicine with qualifications MRCEM (UK)., MRCP (UK).",
+    "fullBio": "Dr. Naveen Sundaram is highly experienced in Emergency & Critical Care Medicine. He holds MRCEM (UK)., MRCP (UK) credentials and is dedicated to providing the best patient care.",
+    "philosophy": "Committed to delivering excellence in healthcare with compassion and precision.",
+    "expertise": [
+      "Emergency & Critical Care Medicine",
+      "Consultant Emergency & Critical Care Medicine"
+    ],
+    "social": {
+      "linkedin": "https://www.linkedin.com/",
+      "twitter": "https://twitter.com/"
+    }
+  },
+  {
+    "id": "aravind-k",
+    "name": "Dr. Aravind. K",
+    "specialty": "Cardiothoracic Surgeon",
+    "image": "imagePaths.doctors.d9",
+    "shortBio": "Dr. Aravind. K is a specialist in Cardiothoracic & Vascular Surgery with qualifications DNB., MCh (CTVS).",
+    "fullBio": "Dr. Aravind. K is highly experienced in Cardiothoracic & Vascular Surgery. He holds DNB., MCh (CTVS) credentials and is dedicated to providing the best patient care.",
+    "philosophy": "Committed to delivering excellence in healthcare with compassion and precision.",
+    "expertise": [
+      "Cardiothoracic & Vascular Surgery",
+      "Cardiothoracic Surgeon"
+    ],
+    "social": {
+      "linkedin": "https://www.linkedin.com/",
+      "twitter": "https://twitter.com/"
+    }
+  },
+  {
+    "id": "k-sathyasagar",
+    "name": "Dr. K. Sathyasagar",
+    "specialty": "Consultant Nephrologist",
+    "image": "imagePaths.doctors.d10",
+    "shortBio": "Dr. K. Sathyasagar is a specialist in Nephrology with qualifications MD., DM (Nephro)., DNB (Nephro).",
+    "fullBio": "Dr. K. Sathyasagar is highly experienced in Nephrology. He holds MD., DM (Nephro)., DNB (Nephro) credentials and is dedicated to providing the best patient care.",
+    "philosophy": "Committed to delivering excellence in healthcare with compassion and precision.",
+    "expertise": [
+      "Nephrology",
+      "Consultant Nephrologist"
+    ],
+    "social": {
+      "linkedin": "https://www.linkedin.com/",
+      "twitter": "https://twitter.com/"
+    }
+  },
+  {
+    "id": "i-devarajan",
+    "name": "Dr. I. Devarajan",
+    "specialty": "Consultant Vascular & Endovascular Surgeon",
+    "image": "imagePaths.doctors.d11",
+    "shortBio": "Dr. I. Devarajan is a specialist in Vascular Surgery with qualifications MS., MCh (Vascular Surgery).",
+    "fullBio": "Dr. I. Devarajan is highly experienced in Vascular Surgery. He holds MS., MCh (Vascular Surgery) credentials and is dedicated to providing the best patient care.",
+    "philosophy": "Committed to delivering excellence in healthcare with compassion and precision.",
+    "expertise": [
+      "Vascular Surgery",
+      "Consultant Vascular & Endovascular Surgeon"
+    ],
+    "social": {
+      "linkedin": "https://www.linkedin.com/",
+      "twitter": "https://twitter.com/"
+    }
+  },
+  {
+    "id": "r-bhavidra",
+    "name": "Dr. R. Bhavidra",
+    "specialty": "Consultant Interventional Cardiologist",
+    "image": "imagePaths.doctors.d12",
+    "shortBio": "Dr. R. Bhavidra is a specialist in Cardiology with qualifications MD., DM (Cardio).",
+    "fullBio": "Dr. R. Bhavidra is highly experienced in Cardiology. He holds MD., DM (Cardio) credentials and is dedicated to providing the best patient care.",
+    "philosophy": "Committed to delivering excellence in healthcare with compassion and precision.",
+    "expertise": [
+      "Cardiology",
+      "Consultant Interventional Cardiologist"
+    ],
+    "social": {
+      "linkedin": "https://www.linkedin.com/",
+      "twitter": "https://twitter.com/"
+    }
+  },
+  {
+    "id": "k-narendran",
+    "name": "Dr. K. Narendran",
+    "specialty": "Medical & Haemato Oncologist",
+    "image": "imagePaths.doctors.d13",
+    "shortBio": "Dr. K. Narendran is a specialist in Medical & Haemato Oncology with qualifications MD., FAGE., DM (JIPMER).",
+    "fullBio": "Dr. K. Narendran is highly experienced in Medical & Haemato Oncology. He holds MD., FAGE., DM (JIPMER) credentials and is dedicated to providing the best patient care.",
+    "philosophy": "Committed to delivering excellence in healthcare with compassion and precision.",
+    "expertise": [
+      "Medical & Haemato Oncology",
+      "Medical & Haemato Oncologist"
+    ],
+    "social": {
+      "linkedin": "https://www.linkedin.com/",
+      "twitter": "https://twitter.com/"
+    }
+  },
+  {
+    "id": "p-ramamoorthi",
+    "name": "Dr. P. Ramamoorthi",
+    "specialty": "Consultant Anaesthesiology & Critical Care",
+    "image": "imagePaths.doctors.d14",
+    "shortBio": "Dr. P. Ramamoorthi is a specialist in Anaesthesiology and Critical Care with qualifications MD (Anaes).",
+    "fullBio": "Dr. P. Ramamoorthi is highly experienced in Anaesthesiology and Critical Care. He holds MD (Anaes) credentials and is dedicated to providing the best patient care.",
+    "philosophy": "Committed to delivering excellence in healthcare with compassion and precision.",
+    "expertise": [
+      "Anaesthesiology and Critical Care",
+      "Consultant Anaesthesiology & Critical Care"
+    ],
+    "social": {
+      "linkedin": "https://www.linkedin.com/",
+      "twitter": "https://twitter.com/"
+    }
+  },
+  {
+    "id": "dinesh-kumar-r",
+    "name": "Dr. Dinesh Kumar. R",
+    "specialty": "Radiation Oncologist",
+    "image": "imagePaths.doctors.d15",
+    "shortBio": "Dr. Dinesh Kumar. R is a specialist in Radiation Oncology with qualifications DMRT.",
+    "fullBio": "Dr. Dinesh Kumar. R is highly experienced in Radiation Oncology. He holds DMRT credentials and is dedicated to providing the best patient care.",
+    "philosophy": "Committed to delivering excellence in healthcare with compassion and precision.",
+    "expertise": [
+      "Radiation Oncology",
+      "Radiation Oncologist"
+    ],
+    "social": {
+      "linkedin": "https://www.linkedin.com/",
+      "twitter": "https://twitter.com/"
+    }
+  },
+  {
+    "id": "prakash-asokan",
+    "name": "Dr. Prakash Asokan",
+    "specialty": "Consultant Radiologist",
+    "image": "imagePaths.doctors.d16",
+    "shortBio": "Dr. Prakash Asokan is a specialist in Radiology with qualifications DMRD, DNB (RD), FRCR (UK), EDiR ( Vienna), Fellowship in Oncoradiology, Master in Oncologic Imaging (Pisa, Italy).",
+    "fullBio": "Dr. Prakash Asokan is highly experienced in Radiology. He holds DMRD, DNB (RD), FRCR (UK), EDiR ( Vienna), Fellowship in Oncoradiology, Master in Oncologic Imaging (Pisa, Italy) credentials and is dedicated to providing the best patient care.",
+    "philosophy": "Committed to delivering excellence in healthcare with compassion and precision.",
+    "expertise": [
+      "Radiology",
+      "Consultant Radiologist"
+    ],
+    "social": {
+      "linkedin": "https://www.linkedin.com/",
+      "twitter": "https://twitter.com/"
+    }
+  },
+  {
+    "id": "samynathan-g",
+    "name": "Dr. Samynathan. G",
+    "specialty": "Consultant Orthopaedics",
+    "image": "imagePaths.doctors.d17",
+    "shortBio": "Dr. Samynathan. G is a specialist in Orthopaedics with qualifications MS (Ortho)., FIA Fellowship in Arthroplasty.",
+    "fullBio": "Dr. Samynathan. G is highly experienced in Orthopaedics. He holds MS (Ortho)., FIA Fellowship in Arthroplasty credentials and is dedicated to providing the best patient care.",
+    "philosophy": "Committed to delivering excellence in healthcare with compassion and precision.",
+    "expertise": [
+      "Orthopaedics",
+      "Consultant Orthopaedics"
+    ],
+    "social": {
+      "linkedin": "https://www.linkedin.com/",
+      "twitter": "https://twitter.com/"
+    }
+  },
+  {
+    "id": "shanmuganathan-b",
+    "name": "Dr. Shanmuganathan. B",
+    "specialty": "Consultant Psychiatrist",
+    "image": "imagePaths.doctors.d18",
+    "shortBio": "Dr. Shanmuganathan. B is a specialist in Psychiatry with qualifications MD (Pscyhiatry).",
+    "fullBio": "Dr. Shanmuganathan. B is highly experienced in Psychiatry. He holds MD (Pscyhiatry) credentials and is dedicated to providing the best patient care.",
+    "philosophy": "Committed to delivering excellence in healthcare with compassion and precision.",
+    "expertise": [
+      "Psychiatry",
+      "Consultant Psychiatrist"
+    ],
+    "social": {
+      "linkedin": "https://www.linkedin.com/",
+      "twitter": "https://twitter.com/"
+    }
+  },
+  {
+    "id": "senthil-kumar-s",
+    "name": "Dr. Senthil Kumar. S",
+    "specialty": "Consultant Neurosurgeon",
+    "image": "imagePaths.doctors.d19",
+    "shortBio": "Dr. Senthil Kumar. S is a specialist in Neuro Surgery with qualifications MS., MCh (Neuro).",
+    "fullBio": "Dr. Senthil Kumar. S is highly experienced in Neuro Surgery. He holds MS., MCh (Neuro) credentials and is dedicated to providing the best patient care.",
+    "philosophy": "Committed to delivering excellence in healthcare with compassion and precision.",
+    "expertise": [
+      "Neuro Surgery",
+      "Consultant Neurosurgeon"
+    ],
+    "social": {
+      "linkedin": "https://www.linkedin.com/",
+      "twitter": "https://twitter.com/"
+    }
+  },
+  {
+    "id": "sridhar-sinnakalai",
+    "name": "Dr. Sridhar Sinnakalai",
+    "specialty": "Consultant Physician",
+    "image": "imagePaths.doctors.d20",
+    "shortBio": "Dr. Sridhar Sinnakalai is a specialist in General Medicine with qualifications MD (General Medicine).",
+    "fullBio": "Dr. Sridhar Sinnakalai is highly experienced in General Medicine. He holds MD (General Medicine) credentials and is dedicated to providing the best patient care.",
+    "philosophy": "Committed to delivering excellence in healthcare with compassion and precision.",
+    "expertise": [
+      "General Medicine",
+      "Consultant Physician"
+    ],
+    "social": {
+      "linkedin": "https://www.linkedin.com/",
+      "twitter": "https://twitter.com/"
+    }
+  },
+  {
+    "id": "ragaselvi-s",
+    "name": "Dr. Ragaselvi. S",
+    "specialty": "Consultant Pulmonologist",
+    "image": "imagePaths.doctors.d21",
+    "shortBio": "Dr. Ragaselvi. S is a specialist in Pulmonology with qualifications MD (Pulmonary Medicine).",
+    "fullBio": "Dr. Ragaselvi. S is highly experienced in Pulmonology. He holds MD (Pulmonary Medicine) credentials and is dedicated to providing the best patient care.",
+    "philosophy": "Committed to delivering excellence in healthcare with compassion and precision.",
+    "expertise": [
+      "Pulmonology",
+      "Consultant Pulmonologist"
+    ],
+    "social": {
+      "linkedin": "https://www.linkedin.com/",
+      "twitter": "https://twitter.com/"
+    }
+  },
+  {
+    "id": "raj-thilak-r",
+    "name": "Dr. Raj Thilak. R",
+    "specialty": "Consultant - Interventional Pulmonology Sleep Medicine & Critical Care",
+    "image": "imagePaths.doctors.d22",
+    "shortBio": "Dr. Raj Thilak. R is a specialist in Pulmonology with qualifications MD (Pulmonary Medicine).",
+    "fullBio": "Dr. Raj Thilak. R is highly experienced in Pulmonology. He holds MD (Pulmonary Medicine) credentials and is dedicated to providing the best patient care.",
+    "philosophy": "Committed to delivering excellence in healthcare with compassion and precision.",
+    "expertise": [
+      "Pulmonology",
+      "Consultant - Interventional Pulmonology Sleep Medicine & Critical Care"
+    ],
+    "social": {
+      "linkedin": "https://www.linkedin.com/",
+      "twitter": "https://twitter.com/"
+    }
+  },
+  {
+    "id": "priyadharshini-s",
+    "name": "Dr. Priyadharshini. S",
+    "specialty": "Consultant Dermatologist",
+    "image": "imagePaths.doctors.d23",
+    "shortBio": "Dr. Priyadharshini. S is a specialist in Dermatology with qualifications MD (DVL).",
+    "fullBio": "Dr. Priyadharshini. S is highly experienced in Dermatology. He holds MD (DVL) credentials and is dedicated to providing the best patient care.",
+    "philosophy": "Committed to delivering excellence in healthcare with compassion and precision.",
+    "expertise": [
+      "Dermatology",
+      "Consultant Dermatologist"
+    ],
+    "social": {
+      "linkedin": "https://www.linkedin.com/",
+      "twitter": "https://twitter.com/"
+    }
+  },
+  {
+    "id": "s-thayumanavan",
+    "name": "Dr. S. Thayumanavan",
+    "specialty": "Dental Surgeon, Consultant Preventive and Pediatric Dentistry",
+    "image": "imagePaths.doctors.d24",
+    "shortBio": "Dr. S. Thayumanavan is a specialist in Dental Surgery with qualifications MDS.",
+    "fullBio": "Dr. S. Thayumanavan is highly experienced in Dental Surgery. He holds MDS credentials and is dedicated to providing the best patient care.",
+    "philosophy": "Committed to delivering excellence in healthcare with compassion and precision.",
+    "expertise": [
+      "Dental Surgery",
+      "Dental Surgeon, Consultant Preventive and Pediatric Dentistry"
+    ],
+    "social": {
+      "linkedin": "https://www.linkedin.com/",
+      "twitter": "https://twitter.com/"
+    }
+  },
+  {
+    "id": "m-nirmal",
+    "name": "Dr. M. Nirmal",
+    "specialty": "Consultant Orthopaedics & Trauma",
+    "image": "imagePaths.doctors.d25",
+    "shortBio": "Dr. M. Nirmal is a specialist in Orthopaedics & Trauma with qualifications MS (Ortho)., DNB (Ortho), Fellowship in Orthoscopic & Sports Medicine.",
+    "fullBio": "Dr. M. Nirmal is highly experienced in Orthopaedics & Trauma. He holds MS (Ortho)., DNB (Ortho), Fellowship in Orthoscopic & Sports Medicine credentials and is dedicated to providing the best patient care.",
+    "philosophy": "Committed to delivering excellence in healthcare with compassion and precision.",
+    "expertise": [
+      "Orthopaedics & Trauma",
+      "Consultant Orthopaedics & Trauma"
+    ],
+    "social": {
+      "linkedin": "https://www.linkedin.com/",
+      "twitter": "https://twitter.com/"
+    }
+  },
+  {
+    "id": "anitha-k",
+    "name": "Dr. Anitha. K",
+    "specialty": "Consultant Microbiologist",
+    "image": "imagePaths.doctors.d26",
+    "shortBio": "Dr. Anitha. K is a specialist in Microbiology with qualifications MD (Microbiology).",
+    "fullBio": "Dr. Anitha. K is highly experienced in Microbiology. He holds MD (Microbiology) credentials and is dedicated to providing the best patient care.",
+    "philosophy": "Committed to delivering excellence in healthcare with compassion and precision.",
+    "expertise": [
+      "Microbiology",
+      "Consultant Microbiologist"
+    ],
+    "social": {
+      "linkedin": "https://www.linkedin.com/",
+      "twitter": "https://twitter.com/"
+    }
+  },
+  {
+    "id": "vijay-pradap-r",
+    "name": "Dr. Vijay Pradap. R",
+    "specialty": "Consultant ENT Surgeon",
+    "image": "imagePaths.doctors.d27",
+    "shortBio": "Dr. Vijay Pradap. R is a specialist in ENT with qualifications MS (ENT).",
+    "fullBio": "Dr. Vijay Pradap. R is highly experienced in ENT. He holds MS (ENT) credentials and is dedicated to providing the best patient care.",
+    "philosophy": "Committed to delivering excellence in healthcare with compassion and precision.",
+    "expertise": [
+      "ENT",
+      "Consultant ENT Surgeon"
+    ],
+    "social": {
+      "linkedin": "https://www.linkedin.com/",
+      "twitter": "https://twitter.com/"
+    }
+  },
+  {
+    "id": "mohammed-imran-khan-a",
+    "name": "Dr. Mohammed Imran Khan. A",
+    "specialty": "Consultant Plastic, Hand, Burns and Microvascular Reconstructive Surgeon",
+    "image": "imagePaths.doctors.d28",
+    "shortBio": "Dr. Mohammed Imran Khan. A is a specialist in Plastic and Reconstructive Surgery with qualifications MS(General Surgery), DNB, MRCS (UK), MCh (Plastic Surgery), DrNB.",
+    "fullBio": "Dr. Mohammed Imran Khan. A is highly experienced in Plastic and Reconstructive Surgery. He holds MS(General Surgery), DNB, MRCS (UK), MCh (Plastic Surgery), DrNB credentials and is dedicated to providing the best patient care.",
+    "philosophy": "Committed to delivering excellence in healthcare with compassion and precision.",
+    "expertise": [
+      "Plastic and Reconstructive Surgery",
+      "Consultant Plastic, Hand, Burns and Microvascular Reconstructive Surgeon"
+    ],
+    "social": {
+      "linkedin": "https://www.linkedin.com/",
+      "twitter": "https://twitter.com/"
+    }
+  },
+  {
+    "id": "divya-m",
+    "name": "Dr. Divya. M",
+    "specialty": "Consultant Pediatrician",
+    "image": "imagePaths.doctors.d29",
+    "shortBio": "Dr. Divya. M is a specialist in Pediatrics with qualifications DNB (Pediatrics).",
+    "fullBio": "Dr. Divya. M is highly experienced in Pediatrics. He holds DNB (Pediatrics) credentials and is dedicated to providing the best patient care.",
+    "philosophy": "Committed to delivering excellence in healthcare with compassion and precision.",
+    "expertise": [
+      "Pediatrics",
+      "Consultant Pediatrician"
+    ],
+    "social": {
+      "linkedin": "https://www.linkedin.com/",
+      "twitter": "https://twitter.com/"
     }
   }
 ];

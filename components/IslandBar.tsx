@@ -1,5 +1,6 @@
 import React from 'react';
 import EditableText from './MasterSetup/EditableText';
+import { motion } from 'framer-motion';
 
 const IslandBar: React.FC = () => {
   const handleNavClick = (event: React.MouseEvent<HTMLAnchorElement>, href: string) => {
@@ -53,27 +54,42 @@ const IslandBar: React.FC = () => {
 
   return (
     <section className="relative z-20">
-      <div className="container mx-auto px-4 relative -mt-10 animate-on-scroll fade-in-up">
-        <div className="max-w-5xl mx-auto bg-white/90 backdrop-blur-xl rounded-full shadow-[0_20px_50px_rgba(0,0,0,0.1)] flex flex-row overflow-hidden transition-all duration-500 hover:shadow-[0_25px_60px_rgba(0,0,0,0.15)] border border-white/50">
+      <div className="container mx-auto px-2 sm:px-4 relative mt-0 md:-mt-10 animate-on-scroll fade-in-up">
+        <motion.div 
+          initial={{ y: 20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="max-w-5xl mx-auto md:bg-white/90 md:backdrop-blur-xl md:rounded-full md:shadow-[0_20px_50px_rgba(0,0,0,0.1)] flex flex-row overflow-hidden transition-all duration-500 hover:shadow-[0_25px_60px_rgba(0,0,0,0.15)] md:border md:border-white/50
+                     bg-white/80 backdrop-blur-2xl rounded-2xl shadow-[0_8px_32px_rgba(0,181,165,0.15)] border border-[#00B5A5]/20 relative"
+        >
+          {/* Subtle animated gradient background for mobile futuristic feel */}
+          <div className="absolute inset-0 bg-gradient-to-r from-[#00B5A5]/5 via-white/10 to-[#0E2A47]/5 animate-pulse md:hidden pointer-events-none"></div>
+          
           {navItems.map((item, index) => (
-            <a
+            <motion.a
               key={index}
               href={item.href}
               onClick={(e) => handleNavClick(e, item.href)}
-              className={`flex-1 py-3 md:py-6 flex items-center justify-center gap-1.5 md:gap-4 transition-all duration-300 group ${item.hoverClass} border-r border-gray-100/50 last:border-0`}
+              whileTap={{ scale: 0.95 }}
+              className={`flex-1 py-4 md:py-6 flex flex-col md:flex-row items-center justify-center gap-2 md:gap-4 transition-all duration-300 group ${item.hoverClass} border-r border-[#00B5A5]/10 md:border-gray-100/50 last:border-0 relative z-10`}
             >
-              <div className={`p-1.5 md:p-2.5 rounded-lg md:xl transition-all duration-500 group-hover:scale-110 group-hover:rotate-3 ${item.iconClass}`}>
-                {React.cloneElement(item.icon as React.ReactElement, { className: 'w-4 h-4 md:w-6 md:h-6 transition-colors duration-300' })}
-              </div>
+              <motion.div 
+                whileHover={{ rotate: 5, scale: 1.1 }}
+                className={`p-2 md:p-2.5 rounded-xl md:rounded-lg transition-all duration-500 
+                  shadow-[0_4px_12px_rgba(0,0,0,0.05)] md:shadow-none
+                  ${item.iconClass}`}
+              >
+                {React.cloneElement(item.icon as React.ReactElement, { className: 'w-5 h-5 md:w-6 md:h-6 transition-colors duration-300' })}
+              </motion.div>
               <EditableText
                 as="span"
                 configKey={item.titleKey}
                 defaultValue={item.defaultTitle}
-                className={`text-[#0E2A47] group-hover:${item.activeColor} text-[10px] md:text-xl font-bold tracking-tight transition-colors duration-300 whitespace-nowrap`}
+                className={`text-[#0E2A47] group-hover:${item.activeColor} text-[10px] md:text-xl font-bold tracking-wide md:tracking-tight transition-colors duration-300 text-center md:whitespace-nowrap`}
               />
-            </a>
+            </motion.a>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

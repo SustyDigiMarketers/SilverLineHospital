@@ -99,9 +99,15 @@ const App: React.FC = () => {
   useEffect(() => {
     const handleHashChange = () => {
       const info = getPageInfoFromHash();
-      setPageInfo(info);
-      window.scrollTo(0, 0);
       
+      setPageInfo((prevInfo) => {
+        // Only scroll to top if we are navigating to a DIFFERENT page view
+        if (prevInfo.page !== info.page) {
+          window.scrollTo(0, 0);
+        }
+        return info;
+      });
+
       // Track the page view in Supabase
       trackPageView(info.page);
     };

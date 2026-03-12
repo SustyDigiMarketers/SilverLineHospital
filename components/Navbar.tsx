@@ -161,7 +161,7 @@ const Navbar: React.FC<NavbarProps> = ({ activeSection, onBookAppointmentClick, 
             layout
             className={`relative transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${
               isScrolled
-                ? 'bg-white md:bg-white/60 md:backdrop-blur-3xl md:rounded-[2rem] md:shadow-[0_30px_60px_-15px_rgba(0,0,0,0.1),0_0_0_1px_rgba(255,255,255,0.4)] border-b md:border-none border-gray-100 px-6 py-2 flex items-center justify-between'
+                ? 'bg-white md:bg-white/60 md:backdrop-blur-3xl md:rounded-[2rem] border-b md:border-none border-gray-100 px-8 py-3 lg:py-4 flex items-center justify-between shadow-2xl shadow-black/5'
                 : 'bg-white w-full border-b border-gray-100 px-6 sm:px-10 lg:px-20 py-5'
             }`}
           >
@@ -206,8 +206,8 @@ const Navbar: React.FC<NavbarProps> = ({ activeSection, onBookAppointmentClick, 
                             }}
                             className={`px-6 py-2.5 rounded-full font-black text-[12px] lg:text-sm transition-all duration-300 ${
                               isActive 
-                                ? 'bg-[#1d3f7f] text-white shadow-[0_10px_20px_rgba(29,63,127,0.3)] scale-105' 
-                                : 'bg-[#27afaf] text-white hover:bg-[#1d3f7f] hover:shadow-[0_10px_20px_rgba(39,175,175,0.2)]'
+                                ? 'bg-[#1d3f7f] text-white scale-105' 
+                                : 'bg-[#27afaf] text-white hover:bg-[#1d3f7f]'
                             }`}
                           >
                             {label}
@@ -224,12 +224,7 @@ const Navbar: React.FC<NavbarProps> = ({ activeSection, onBookAppointmentClick, 
 
                   {/* BOTTOM: Navigation Links */}
                   <div className="relative flex items-center justify-between w-full" onKeyDown={handleNavKeyDown}>
-                    <motion.div
-                      layoutId="activeBlob"
-                      className="absolute h-[90%] bg-[#27afaf]/10 rounded-xl z-0"
-                      style={{ ...blobStyle, top: '5%' }}
-                      transition={{ type: 'spring', stiffness: 350, damping: 30 }}
-                    />
+
                     
                     {navLinks.map((link, index) => {
                       const isActive = (focusedLinkIndex !== null && focusedLinkIndex === index) || (focusedLinkIndex === null && activeSection === link.name);
@@ -245,20 +240,45 @@ const Navbar: React.FC<NavbarProps> = ({ activeSection, onBookAppointmentClick, 
                             onClick={(e) => handleNavClick(e, link.href)}
                             onFocus={() => setFocusedLinkIndex(index)}
                             onBlur={() => setFocusedLinkIndex(null)}
-                            className={`relative z-10 font-black transition-all duration-300 rounded-xl focus:outline-none tracking-tight flex items-center justify-center ${
+                            className={`relative z-10 font-bold transition-all duration-500 rounded-xl focus:outline-none tracking-tight flex items-center justify-center ${
                               isActive
-                              ? 'text-[#27afaf] bg-teal-50/50'
-                              : 'text-[#0E2A47] hover:text-[#27afaf] hover:bg-gray-50'
-                            } text-[14px] lg:text-[16px] px-5 py-2.5`}
+                              ? 'text-[#27afaf]'
+                              : 'text-[#0E2A47]/80 hover:text-[#27afaf]'
+                            } text-[14px] lg:text-[16px] px-6 py-2.5 group`}
                           >
-                            {link.name}
-                            {isActive && (
-                              <motion.div
-                                layoutId="activeUnderline"
-                                className="absolute bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 bg-[#27afaf] rounded-full"
-                              />
-                            )}
-                          </motion.a>
+                            <span className="relative">
+                              {link.name}
+                              {isActive && (
+                                <motion.span 
+                                  layoutId="activeTextGlow"
+                                  className="absolute inset-0 blur-md bg-[#27afaf]/20 -z-10 rounded-full"
+                                  initial={{ opacity: 0 }}
+                                  animate={{ opacity: 1 }}
+                                />
+                              )}
+                            </span>
+                              {isActive && (
+                                <div className="absolute -bottom-2.5 inset-x-0 flex justify-center h-[3px]">
+                                   <div className="relative w-full flex justify-center">
+                                      <motion.div
+                                        layoutId="activeUnderline"
+                                        className="h-full rounded-full bg-gradient-to-r from-transparent via-[#27afaf] to-transparent"
+                                        style={{ width: '90%' }}
+                                      >
+                                        <motion.div 
+                                          className="absolute inset-0 bg-white/40 blur-[1px]"
+                                          animate={{ x: ['-100%', '100%'] }}
+                                          transition={{ duration: 3, repeat: Infinity, ease: 'linear' }}
+                                        />
+                                      </motion.div>
+                                      <motion.div 
+                                        layoutId="activeUnderlineGlow"
+                                        className="absolute -inset-2 bg-[#27afaf]/20 blur-md rounded-full -z-10" 
+                                      />
+                                   </div>
+                                </div>
+                              )}
+                            </motion.a>
                       );
                     })}
                   </div>
@@ -280,19 +300,14 @@ const Navbar: React.FC<NavbarProps> = ({ activeSection, onBookAppointmentClick, 
                     <EditableImage 
                         configKey="imagePaths.logos.main" 
                         alt="Logo" 
-                        className="h-11 w-auto object-contain"
+                        className="h-16 lg:h-20 w-auto object-contain"
                     />
                   </motion.a>
                 </AnimatePresence>
 
-                {/* Navigation Links with Dynamic Blob in Scrolled Mode */}
-                <div className="relative hidden md:flex items-center justify-end flex-grow gap-x-1 lg:gap-x-2" onKeyDown={handleNavKeyDown}>
-                  <motion.div
-                    layoutId="activeBlob"
-                    className="absolute h-[80%] bg-[#27afaf]/10 rounded-xl z-0"
-                    style={{ ...blobStyle, top: '10%' }}
-                    transition={{ type: 'spring', stiffness: 350, damping: 30 }}
-                  />
+                {/* Navigation Links — Scrolled Mode */}
+                <div className="relative hidden md:flex items-center justify-end flex-grow gap-x-2 lg:gap-x-1" onKeyDown={handleNavKeyDown}>
+
                   
                   {navLinks.map((link, index) => {
                     const isActive = (focusedLinkIndex !== null && focusedLinkIndex === index) || (focusedLinkIndex === null && activeSection === link.name);
@@ -308,20 +323,39 @@ const Navbar: React.FC<NavbarProps> = ({ activeSection, onBookAppointmentClick, 
                           onClick={(e) => handleNavClick(e, link.href)}
                           onFocus={() => setFocusedLinkIndex(index)}
                           onBlur={() => setFocusedLinkIndex(null)}
-                          className={`relative z-10 font-black transition-all duration-300 rounded-xl focus:outline-none tracking-tight flex items-center justify-center ${
+                          className={`relative z-10 font-bold transition-all duration-500 rounded-full focus:outline-none tracking-tight flex items-center justify-center ${
                             isActive
-                            ? 'text-[#27afaf] bg-teal-50/30'
-                            : 'text-[#0E2A47] hover:text-[#27afaf] hover:bg-gray-50/50'
-                          } text-[12px] lg:text-[13px] px-3 py-1.5`}
+                            ? 'text-[#27afaf]'
+                            : 'text-[#0E2A47]/80 hover:text-[#27afaf]'
+                          } text-[14px] lg:text-[15px] px-5 py-2 group`}
                         >
-                          {link.name}
+                          <span className="relative">
+                            {link.name}
+                            {isActive && (
+                                <motion.span 
+                                  layoutId="activeTextGlowScroll"
+                                  className="absolute inset-0 blur-md bg-[#27afaf]/20 -z-10 rounded-full"
+                                  initial={{ opacity: 0 }}
+                                  animate={{ opacity: 1 }}
+                                />
+                              )}
+                          </span>
                           {isActive && (
-                            <motion.div
-                              layoutId="activeUnderline"
-                              className="absolute bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 bg-[#27afaf] rounded-full"
-                            />
-                          )}
-                        </motion.a>
+                              <div className="absolute -bottom-2 inset-x-0 flex justify-center h-[3px]">
+                                <div className="relative w-full flex justify-center">
+                                  <motion.div
+                                    layoutId="activeUnderline"
+                                    className="h-full rounded-full bg-gradient-to-r from-transparent via-[#27afaf] to-transparent"
+                                    style={{ width: '90%' }}
+                                  />
+                                  <motion.div 
+                                    layoutId="activeUnderlineGlow"
+                                    className="absolute -inset-2 bg-[#27afaf]/20 blur-md rounded-full -z-10" 
+                                  />
+                                </div>
+                              </div>
+                            )}
+                          </motion.a>
                     );
                   })}
                 </div>
@@ -336,7 +370,7 @@ const Navbar: React.FC<NavbarProps> = ({ activeSection, onBookAppointmentClick, 
                   >
                     <MagneticButton 
                       onClick={onBookAppointmentClick}
-                      className="px-6 py-2 rounded-full bg-gradient-to-r from-[#27afaf] to-[#1d3f7f] text-white font-black text-xs transition-all hover:shadow-[0_10px_20px_rgba(39,175,175,0.3)] shadow-md"
+                      className="px-6 py-2.5 rounded-full bg-gradient-to-r from-[#27afaf] to-[#1d3f7f] text-white font-black text-sm lg:text-base transition-all"
                     >
                       Appointment
                     </MagneticButton>
@@ -362,7 +396,7 @@ const Navbar: React.FC<NavbarProps> = ({ activeSection, onBookAppointmentClick, 
                 </motion.a>
                <button
                   onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                  className="p-3 text-[#27afaf] rounded-2xl bg-white shadow-xl border border-gray-100 transition-all active:scale-90"
+                  className="p-3 text-[#27afaf] rounded-2xl bg-white border border-gray-100 transition-all active:scale-90"
                 >
                   <AnimatePresence mode="wait">
                     {isMobileMenuOpen ? (
@@ -383,7 +417,7 @@ const Navbar: React.FC<NavbarProps> = ({ activeSection, onBookAppointmentClick, 
                 initial={{ opacity: 0, scaleY: 0 }}
                 animate={{ opacity: 1, scaleY: 1 }}
                 exit={{ opacity: 0, scaleY: 0 }}
-                className="md:hidden absolute top-full left-0 w-full bg-white/95 backdrop-blur-2xl shadow-3xl border-t border-gray-100 origin-top overflow-hidden"
+                className="md:hidden absolute top-full left-0 w-full bg-white/95 backdrop-blur-2xl border-t border-gray-100 origin-top overflow-hidden"
                 style={{ borderRadius: '0 0 2.5rem 2.5rem' }}
             >
                 <div className="flex flex-col p-8 space-y-6">
@@ -403,8 +437,8 @@ const Navbar: React.FC<NavbarProps> = ({ activeSection, onBookAppointmentClick, 
                         </motion.a>
                     ))}
                     <motion.div initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.3 }} className="pt-8 border-t border-gray-100 grid grid-cols-2 gap-4">
-                      <button onClick={onBookAppointmentClick} className="px-5 py-4 bg-gradient-to-r from-[#27afaf] to-[#1d3f7f] text-white rounded-2xl font-black text-sm shadow-lg active:scale-95 transition-transform">Appointment</button>
-                      <button onClick={onPatientPortalClick} className="px-5 py-4 bg-[#0E2A47] text-white rounded-2xl font-black text-sm shadow-lg active:scale-95 transition-transform">Portal</button>
+                      <button onClick={onBookAppointmentClick} className="px-5 py-4 bg-gradient-to-r from-[#27afaf] to-[#1d3f7f] text-white rounded-2xl font-black text-sm active:scale-95 transition-transform">Appointment</button>
+                      <button onClick={onPatientPortalClick} className="px-5 py-4 bg-[#0E2A47] text-white rounded-2xl font-black text-sm active:scale-95 transition-transform">Portal</button>
                     </motion.div>
                 </div>
             </motion.div>

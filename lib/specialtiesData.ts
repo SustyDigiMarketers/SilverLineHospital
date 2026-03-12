@@ -1,6 +1,7 @@
 import React from 'react';
 
 export const specialtiesList = [
+  // 1. General Medicine
   {
     id: 'general-medicine',
     name: 'General Medicine',
@@ -13,150 +14,7 @@ export const specialtiesList = [
     keywords: ['general medicine', 'physician'],
     faqs: []
   },
-  {
-    id: 'orthopedics',
-    name: 'Orthopedics',
-    shortDescription: 'Restoring mobility for bones, joints, and muscles in Trichy.',
-    iconPath: 'imagePaths.specialties.icons.orthopedics',
-    heroImage: 'imagePaths.specialties.orthopedicsHero',
-    description: `Our Orthopedics department in Trichy is dedicated to treating injuries and diseases of the musculoskeletal system. From sports injuries to joint replacements, our team provides comprehensive care.`,
-    services: ['Joint Replacement Surgery (Hip, Knee, Shoulder)', 'Sports Medicine', 'Spine Surgery', 'Trauma and Fracture Care', 'Hand and Upper Extremity Surgery', 'Physical Therapy and Rehabilitation'],
-    gallery: [],
-    keywords: ['orthopedics', 'orthopaedic', 'orthoscopic', 'trauma', 'sports medicine', 'bone'],
-    faqs: []
-  },
-  {
-    id: 'ent',
-    name: 'ENT',
-    shortDescription: 'Comprehensive care for ear, nose, and throat disorders in Trichy.',
-    iconPath: 'imagePaths.specialties.icons.ent',
-    heroImage: 'imagePaths.specialties.entHero',
-    description: 'Our Trichy ENT specialists provide comprehensive medical and surgical care for conditions affecting the ear, nose, throat, head, and neck.',
-    services: ['Sinus Surgery', 'Tonsillectomy', 'Hearing Loss Treatment', 'Voice and Swallowing Disorders'],
-    gallery: [],
-    keywords: ['ent', 'ear', 'nose', 'throat'],
-    faqs: []
-  },
-  {
-    id: 'pulmonology',
-    name: 'Pulmonology',
-    shortDescription: 'Top treatment for respiratory and lung diseases in Trichy.',
-    iconPath: 'imagePaths.specialties.icons.pulmonology',
-    heroImage: 'imagePaths.specialties.pulmonologyHero',
-    description: `Our Pulmonology department in Trichy focuses on the diagnosis and management of diseases of the respiratory system, including the lungs, airways, and chest wall.`,
-    services: ['Asthma and COPD Management', 'Sleep Apnea Diagnosis and Treatment', 'Pulmonary Function Testing', 'Bronchoscopy', 'Interstitial Lung Disease Care', 'Critical Care Medicine'],
-    gallery: [],
-    keywords: ['pulmonology', 'lungs', 'respiratory'],
-    faqs: []
-  },
-  {
-    id: 'surgical-gastroenterology',
-    name: 'Surgical Gastroenterology',
-    shortDescription: 'Surgical solutions for digestive system diseases in Trichy.',
-    iconPath: 'imagePaths.specialties.icons.surgicalGastroenterology',
-    heroImage: 'imagePaths.specialties.surgicalGastroenterologyHero',
-    description: 'Our expert surgeons in Trichy provide advanced surgical options for complex diseases of the gastrointestinal tract, liver, and pancreas.',
-    services: ['Liver Resection', 'Pancreatic Surgery', 'Esophageal Surgery', 'Laparoscopic Colectomy'],
-    gallery: [],
-    keywords: ['surgical gastroenterology'],
-    faqs: []
-  },
-  {
-    id: 'cardiology',
-    name: 'Cardiology',
-    shortDescription: 'Expert cardiology care in Trichy for heart and vascular conditions.',
-    iconPath: 'imagePaths.specialties.icons.cardiology',
-    heroImage: 'imagePaths.specialties.cardiologyHero',
-    description: `Our Cardiology department in Trichy provides comprehensive care for patients with heart and vascular diseases. We offer a full range of services from diagnosis to treatment and rehabilitation, utilizing state-of-the-art technology and a patient-centered approach.`,
-    services: ['Echocardiogram', 'Stress Testing', 'Cardiac Catheterization', 'Coronary Angioplasty', 'Heart Rhythm Management', 'Heart Failure Clinic'],
-    gallery: [],
-    keywords: ['cardiology', 'cardiologist', 'heart'],
-    faqs: []
-  },
-  {
-    id: 'surgical-oncology',
-    name: 'Surgical Oncology',
-    shortDescription: 'Pioneering surgical removal of cancerous tumors in Trichy.',
-    iconPath: 'imagePaths.specialties.icons.surgicalOncology',
-    heroImage: 'imagePaths.specialties.surgicalOncologyHero',
-    description: 'Our Surgical Oncology department in Trichy specializes in the surgical management of cancer, including biopsies, tumor removal, and complex cancer-related surgeries.',
-    services: ['Tumor Resection', 'Mastectomy', 'Lymph Node Biopsy', 'Cytoreductive Surgery'],
-    gallery: [],
-    keywords: ['surgical oncology', 'surgical oncologist'],
-    faqs: []
-  },
-  {
-    id: 'critical-care',
-    name: 'Critical Care',
-    shortDescription: 'Intensive care for critically ill patients in Trichy.',
-    iconPath: 'imagePaths.specialties.icons.criticalCare',
-    heroImage: 'imagePaths.specialties.criticalCareHero',
-    description: 'Providing advanced monitoring and life-sustaining treatments for patients with life-threatening conditions in our state-of-the-art ICU in Trichy.',
-    services: ['24/7 ICU Monitoring', 'Ventilator Management', 'Sepsis Treatment', 'Post-operative Intensive Care'],
-    gallery: [],
-    keywords: ['critical care', 'icu', 'intensive care'],
-    faqs: []
-  },
-  {
-    id: 'cardiothoracic-surgery',
-    name: 'Cardiothoracic Surgery',
-    shortDescription: 'Advanced surgical treatment for heart and chest diseases in Trichy.',
-    iconPath: 'imagePaths.specialties.icons.cardiothoracicSurgery',
-    heroImage: 'imagePaths.specialties.cardiothoracicSurgeryHero',
-    description: 'Specializing in surgical procedures of the heart, lungs, esophagus, and other organs in the chest, our Trichy-based team is a pioneer in the region.',
-    services: ['Coronary Artery Bypass Grafting', 'Heart Valve Repair/Replacement', 'Aortic Surgery', 'Lung Cancer Surgery'],
-    gallery: [],
-    keywords: ['cardiothoracic', 'heart surgery'],
-    faqs: []
-  },
-  {
-    id: 'neurology',
-    name: 'Neurology',
-    shortDescription: 'Advanced care for brain and nervous system disorders in Trichy.',
-    iconPath: 'imagePaths.specialties.icons.neurology',
-    heroImage: 'imagePaths.specialties.neurologyHero',
-    description: `Our Neurology department in Trichy specializes in the diagnosis and treatment of disorders affecting the brain, spinal cord, and nerves.`,
-    services: ['EEG and EMG Testing', 'Stroke Care and Rehabilitation', 'Epilepsy Management', 'Movement Disorder Clinic', 'Headache and Migraine Treatment', 'Memory Disorder Evaluation'],
-    gallery: [],
-    keywords: ['neurology', 'neurologist', 'brain', 'stroke'],
-    faqs: []
-  },
-  {
-    id: 'nephrology',
-    name: 'Nephrology',
-    shortDescription: 'Expert care for kidney diseases and management in Trichy.',
-    iconPath: 'imagePaths.specialties.icons.nephrology',
-    heroImage: 'imagePaths.specialties.urologyHero',
-    description: 'Our Nephrology department provides comprehensive care for acute and chronic kidney diseases, including dialysis and transplant evaluation.',
-    services: ['Dialysis', 'CRRT', 'Peritoneal Dialysis', 'Kidney Biopsy'],
-    gallery: [],
-    keywords: ['nephrology', 'kidney', 'dialysis'],
-    faqs: []
-  },
-  {
-    id: 'medical-oncology',
-    name: 'Medical Oncology',
-    shortDescription: 'Comprehensive cancer treatment and support at Trichy\'s best hospital.',
-    iconPath: 'imagePaths.specialties.icons.medicalOncology',
-    heroImage: 'imagePaths.specialties.oncologyHero',
-    description: `As Trichy's pioneer multi-speciality hospital, we offer a multidisciplinary approach to cancer care, bringing together experts in medical, surgical, and radiation oncology.`,
-    services: ['Chemotherapy', 'Immunotherapy', 'Targeted Therapy', 'Hormone Therapy', 'Genetic Counseling'],
-    gallery: [],
-    keywords: ['oncology', 'cancer', 'onco pathologist'],
-    faqs: []
-  },
-  {
-    id: 'medical-gastroenterology',
-    name: 'Medical Gastroenterology',
-    shortDescription: 'Specialized care for digestive system health in Trichy.',
-    iconPath: 'imagePaths.specialties.icons.medicalGastroenterology',
-    heroImage: 'imagePaths.specialties.gastroHero',
-    description: `We provide expert gastroenterology care in Trichy for a wide range of digestive diseases. Our team uses the latest diagnostic and therapeutic techniques to ensure the best possible outcomes for our patients.`,
-    services: ['Endoscopy and Colonoscopy', 'Liver Disease Management', 'Inflammatory Bowel Disease (IBD) Care', 'Acid Reflux (GERD) Treatment', 'Pancreatic and Biliary Services', 'Nutritional Counseling'],
-    gallery: [],
-    keywords: ['gastroenterology', 'gastroenterologist', 'digestive'],
-    faqs: []
-  },
+  // 2. General Surgery
   {
     id: 'general-surgery',
     name: 'General Surgery',
@@ -169,6 +27,59 @@ export const specialtiesList = [
     keywords: ['general surgery', 'general surgeon', 'laparoscopic'],
     faqs: []
   },
+  // 3. Orthopedics
+  {
+    id: 'orthopedics',
+    name: 'Orthopedics',
+    shortDescription: 'Restoring mobility for bones, joints, and muscles in Trichy.',
+    iconPath: 'imagePaths.specialties.icons.orthopedics',
+    heroImage: 'imagePaths.specialties.orthopedicsHero',
+    description: `Our Orthopedics department in Trichy is dedicated to treating injuries and diseases of the musculoskeletal system. From sports injuries to joint replacements, our team provides comprehensive care.`,
+    services: ['Joint Replacement Surgery (Hip, Knee, Shoulder)', 'Sports Medicine', 'Spine Surgery', 'Trauma and Fracture Care', 'Hand and Upper Extremity Surgery', 'Physical Therapy and Rehabilitation'],
+    gallery: [],
+    keywords: ['orthopedics', 'orthopaedic', 'orthoscopic', 'trauma', 'sports medicine', 'bone'],
+    faqs: []
+  },
+  // 4. Critical Care
+  {
+    id: 'critical-care',
+    name: 'Critical Care',
+    shortDescription: 'Intensive care for critically ill patients in Trichy.',
+    iconPath: 'imagePaths.specialties.icons.criticalCare',
+    heroImage: 'imagePaths.specialties.criticalCareHero',
+    description: 'Providing advanced monitoring and life-sustaining treatments for patients with life-threatening conditions in our state-of-the-art ICU in Trichy.',
+    services: ['24/7 ICU Monitoring', 'Ventilator Management', 'Sepsis Treatment', 'Post-operative Intensive Care'],
+    gallery: [],
+    keywords: ['critical care', 'icu', 'intensive care'],
+    faqs: []
+  },
+  // 5. Medical Oncology
+  {
+    id: 'medical-oncology',
+    name: 'Medical Oncology',
+    shortDescription: 'Comprehensive cancer treatment and support at Trichy\'s best hospital.',
+    iconPath: 'imagePaths.specialties.icons.medicalOncology',
+    heroImage: 'imagePaths.specialties.oncologyHero',
+    description: `As Trichy's pioneer multi-speciality hospital, we offer a multidisciplinary approach to cancer care, bringing together experts in medical, surgical, and radiation oncology.`,
+    services: ['Chemotherapy', 'Immunotherapy', 'Targeted Therapy', 'Hormone Therapy', 'Genetic Counseling'],
+    gallery: [],
+    keywords: ['oncology', 'cancer', 'onco pathologist'],
+    faqs: []
+  },
+  // 6. Surgical Oncology
+  {
+    id: 'surgical-oncology',
+    name: 'Surgical Oncology',
+    shortDescription: 'Pioneering surgical removal of cancerous tumors in Trichy.',
+    iconPath: 'imagePaths.specialties.icons.surgicalOncology',
+    heroImage: 'imagePaths.specialties.surgicalOncologyHero',
+    description: 'Our Surgical Oncology department in Trichy specializes in the surgical management of cancer, including biopsies, tumor removal, and complex cancer-related surgeries.',
+    services: ['Tumor Resection', 'Mastectomy', 'Lymph Node Biopsy', 'Cytoreductive Surgery'],
+    gallery: [],
+    keywords: ['surgical oncology', 'surgical oncologist'],
+    faqs: []
+  },
+  // 7. Radiation Oncology
   {
     id: 'radiation-oncology',
     name: 'Radiation Oncology',
@@ -181,6 +92,98 @@ export const specialtiesList = [
     keywords: ['radiation oncology', 'radiation'],
     faqs: []
   },
+  // 8. Medical Gastroenterology
+  {
+    id: 'medical-gastroenterology',
+    name: 'Medical Gastroenterology',
+    shortDescription: 'Specialized care for digestive system health in Trichy.',
+    iconPath: 'imagePaths.specialties.icons.medicalGastroenterology',
+    heroImage: 'imagePaths.specialties.gastroHero',
+    description: `We provide expert gastroenterology care in Trichy for a wide range of digestive diseases. Our team uses the latest diagnostic and therapeutic techniques to ensure the best possible outcomes for our patients.`,
+    services: ['Endoscopy and Colonoscopy', 'Liver Disease Management', 'Inflammatory Bowel Disease (IBD) Care', 'Acid Reflux (GERD) Treatment', 'Pancreatic and Biliary Services', 'Nutritional Counseling'],
+    gallery: [],
+    keywords: ['gastroenterology', 'gastroenterologist', 'digestive'],
+    faqs: []
+  },
+  // 9. Surgical Gastroenterology
+  {
+    id: 'surgical-gastroenterology',
+    name: 'Surgical Gastroenterology',
+    shortDescription: 'Surgical solutions for digestive system diseases in Trichy.',
+    iconPath: 'imagePaths.specialties.icons.surgicalGastroenterology',
+    heroImage: 'imagePaths.specialties.surgicalGastroenterologyHero',
+    description: 'Our expert surgeons in Trichy provide advanced surgical options for complex diseases of the gastrointestinal tract, liver, and pancreas.',
+    services: ['Liver Resection', 'Pancreatic Surgery', 'Esophageal Surgery', 'Laparoscopic Colectomy'],
+    gallery: [],
+    keywords: ['surgical gastroenterology'],
+    faqs: []
+  },
+  // 10. Nephrology
+  {
+    id: 'nephrology',
+    name: 'Nephrology',
+    shortDescription: 'Expert care for kidney diseases and management in Trichy.',
+    iconPath: 'imagePaths.specialties.icons.nephrology',
+    heroImage: 'imagePaths.specialties.urologyHero',
+    description: 'Our Nephrology department provides comprehensive care for acute and chronic kidney diseases, including dialysis and transplant evaluation.',
+    services: ['Dialysis', 'CRRT', 'Peritoneal Dialysis', 'Kidney Biopsy'],
+    gallery: [],
+    keywords: ['nephrology', 'kidney', 'dialysis'],
+    faqs: []
+  },
+  // 11. Urology
+  {
+    id: 'urology',
+    name: 'Urology',
+    shortDescription: 'Comprehensive care for urinary tract and male reproductive health.',
+    iconPath: 'imagePaths.specialties.icons.urology',
+    heroImage: 'imagePaths.specialties.urologyHero',
+    description: 'Our Urology department provides advanced treatment for kidney stones, prostate health, and urinary tract disorders.',
+    services: ['Kidney Stone Removal', 'Prostate Surgery', 'Uro-Oncology', 'Pediatric Urology'],
+    gallery: [],
+    keywords: ['urology', 'urologist', 'kidney stone'],
+    faqs: []
+  },
+  // 12. Cardiology
+  {
+    id: 'cardiology',
+    name: 'Cardiology',
+    shortDescription: 'Expert cardiology care in Trichy for heart and vascular conditions.',
+    iconPath: 'imagePaths.specialties.icons.cardiology',
+    heroImage: 'imagePaths.specialties.cardiologyHero',
+    description: `Our Cardiology department in Trichy provides comprehensive care for patients with heart and vascular diseases. We offer a full range of services from diagnosis to treatment and rehabilitation, utilizing state-of-the-art technology and a patient-centered approach.`,
+    services: ['Echocardiogram', 'Stress Testing', 'Cardiac Catheterization', 'Coronary Angioplasty', 'Heart Rhythm Management', 'Heart Failure Clinic'],
+    gallery: [],
+    keywords: ['cardiology', 'cardiologist', 'heart'],
+    faqs: []
+  },
+  // 13. Cardiothoracic Surgery
+  {
+    id: 'cardiothoracic-surgery',
+    name: 'Cardiothoracic Surgery',
+    shortDescription: 'Advanced surgical treatment for heart and chest diseases in Trichy.',
+    iconPath: 'imagePaths.specialties.icons.cardiothoracicSurgery',
+    heroImage: 'imagePaths.specialties.cardiothoracicSurgeryHero',
+    description: 'Specializing in surgical procedures of the heart, lungs, esophagus, and other organs in the chest, our Trichy-based team is a pioneer in the region.',
+    services: ['Coronary Artery Bypass Grafting', 'Heart Valve Repair/Replacement', 'Aortic Surgery', 'Lung Cancer Surgery'],
+    gallery: [],
+    keywords: ['cardiothoracic', 'heart surgery'],
+    faqs: []
+  },
+  // 14. Neurology
+  {
+    id: 'neurology',
+    name: 'Neurology',
+    shortDescription: 'Advanced care for brain and nervous system disorders in Trichy.',
+    iconPath: 'imagePaths.specialties.icons.neurology',
+    heroImage: 'imagePaths.specialties.neurologyHero',
+    description: `Our Neurology department in Trichy specializes in the diagnosis and treatment of disorders affecting the brain, spinal cord, and nerves.`,
+    services: ['EEG and EMG Testing', 'Stroke Care and Rehabilitation', 'Epilepsy Management', 'Movement Disorder Clinic', 'Headache and Migraine Treatment', 'Memory Disorder Evaluation'],
+    gallery: [],
+    keywords: ['neurology', 'neurologist', 'brain', 'stroke'],
+    faqs: []
+  },
+  // 15. Neuro Surgery
   {
     id: 'neuro-surgery',
     name: 'Neuro Surgery',
@@ -193,30 +196,20 @@ export const specialtiesList = [
     keywords: ['neuro surgery', 'neurosurgeon', 'brain surgery'],
     faqs: []
   },
+  // 16. Pulmonology
   {
-    id: 'transplant-surgery',
-    name: 'Transplant Surgery',
-    shortDescription: 'Pioneering organ transplant procedures and follow-up care.',
-    iconPath: 'imagePaths.specialties.icons.transplantSurgery',
-    heroImage: 'imagePaths.specialties.generalSurgeryHero',
-    description: 'Our transplant team specializes in multi-organ transplantation, providing life-saving procedures with comprehensive pre- and post-transplant support.',
-    services: ['Kidney Transplant', 'Liver Transplant', 'Post-Transplant Care', 'Donor Evaluation'],
+    id: 'pulmonology',
+    name: 'Pulmonology',
+    shortDescription: 'Top treatment for respiratory and lung diseases in Trichy.',
+    iconPath: 'imagePaths.specialties.icons.pulmonology',
+    heroImage: 'imagePaths.specialties.pulmonologyHero',
+    description: `Our Pulmonology department in Trichy focuses on the diagnosis and management of diseases of the respiratory system, including the lungs, airways, and chest wall.`,
+    services: ['Asthma and COPD Management', 'Sleep Apnea Diagnosis and Treatment', 'Pulmonary Function Testing', 'Bronchoscopy', 'Interstitial Lung Disease Care', 'Critical Care Medicine'],
     gallery: [],
-    keywords: ['transplant', 'kidney transplant', 'liver transplant'],
+    keywords: ['pulmonology', 'lungs', 'respiratory'],
     faqs: []
   },
-  {
-    id: 'bone-marrow-transplant',
-    name: 'Bone Marrow Transplant',
-    shortDescription: 'Advanced cellular therapy for hematological conditions.',
-    iconPath: 'imagePaths.specialties.icons.boneMarrowTransplant',
-    heroImage: 'imagePaths.specialties.generalMedicineHero',
-    description: 'Expert bone marrow and stem cell transplantation for various blood disorders and cancers.',
-    services: ['Autologous BMT', 'Allogeneic BMT', 'Stem Cell Harvest', 'Post-BMT Monitoring'],
-    gallery: [],
-    keywords: ['bmt', 'bone marrow', 'stem cell'],
-    faqs: []
-  },
+  // 17. Vascular Surgery
   {
     id: 'vascular-surgery',
     name: 'Vascular Surgery',
@@ -229,10 +222,24 @@ export const specialtiesList = [
     keywords: ['vascular', 'vein', 'artery'],
     faqs: []
   },
+  // 18. ENT
+  {
+    id: 'ent',
+    name: 'ENT',
+    shortDescription: 'Comprehensive care for ear, nose, and throat disorders in Trichy.',
+    iconPath: 'imagePaths.specialties.icons.ent',
+    heroImage: 'imagePaths.specialties.entHero',
+    description: 'Our Trichy ENT specialists provide comprehensive medical and surgical care for conditions affecting the ear, nose, throat, head, and neck.',
+    services: ['Sinus Surgery', 'Tonsillectomy', 'Hearing Loss Treatment', 'Voice and Swallowing Disorders'],
+    gallery: [],
+    keywords: ['ent', 'ear', 'nose', 'throat'],
+    faqs: []
+  },
+  // 19. Gynaecology
   {
     id: 'gynaecology',
     name: 'Gynaecology',
-    shortDescription: 'Comprehensive care for women’s health at every stage of life.',
+    shortDescription: 'Comprehensive care for women\'s health at every stage of life.',
     iconPath: 'imagePaths.specialties.icons.gynaecology',
     heroImage: 'imagePaths.specialties.gynaecologyHero',
     description: 'Our Gynaecology department in Trichy offers expert care for women, from routine screenings to advanced surgical procedures, ensuring health and wellness.',
@@ -241,6 +248,7 @@ export const specialtiesList = [
     keywords: ['gynaecology', 'obstetrics', 'womens health'],
     faqs: []
   },
+  // 20. Robotic Surgery
   {
     id: 'robotic-surgery',
     name: 'Robotic Surgery',
@@ -253,6 +261,33 @@ export const specialtiesList = [
     keywords: ['robotic', 'minimally invasive', 'precision surgery'],
     faqs: []
   },
+  // 21. Transplant Surgery
+  {
+    id: 'transplant-surgery',
+    name: 'Transplant Surgery',
+    shortDescription: 'Pioneering organ transplant procedures and follow-up care.',
+    iconPath: 'imagePaths.specialties.icons.transplantSurgery',
+    heroImage: 'imagePaths.specialties.generalSurgeryHero',
+    description: 'Our transplant team specializes in multi-organ transplantation, providing life-saving procedures with comprehensive pre- and post-transplant support.',
+    services: ['Kidney Transplant', 'Liver Transplant', 'Post-Transplant Care', 'Donor Evaluation'],
+    gallery: [],
+    keywords: ['transplant', 'kidney transplant', 'liver transplant'],
+    faqs: []
+  },
+  // 22. Bone Marrow Transplant
+  {
+    id: 'bone-marrow-transplant',
+    name: 'Bone Marrow Transplant',
+    shortDescription: 'Advanced cellular therapy for hematological conditions.',
+    iconPath: 'imagePaths.specialties.icons.boneMarrowTransplant',
+    heroImage: 'imagePaths.specialties.generalMedicineHero',
+    description: 'Expert bone marrow and stem cell transplantation for various blood disorders and cancers.',
+    services: ['Autologous BMT', 'Allogeneic BMT', 'Stem Cell Harvest', 'Post-BMT Monitoring'],
+    gallery: [],
+    keywords: ['bmt', 'bone marrow', 'stem cell'],
+    faqs: []
+  },
+  // 23. Pain & Palliative Care
   {
     id: 'pain-palliative-care',
     name: 'Pain & Palliative Care',
@@ -263,18 +298,6 @@ export const specialtiesList = [
     services: ['Chronic Pain Management', 'Symptom Control', 'End-of-life Care', 'Psychological Support'],
     gallery: [],
     keywords: ['pain management', 'palliative care', 'quality of life'],
-    faqs: []
-  },
-  {
-    id: 'urology',
-    name: 'Urology',
-    shortDescription: 'Comprehensive care for urinary tract and male reproductive health.',
-    iconPath: 'imagePaths.specialties.icons.urology',
-    heroImage: 'imagePaths.specialties.urologyHero',
-    description: 'Our Urology department provides advanced treatment for kidney stones, prostate health, and urinary tract disorders.',
-    services: ['Kidney Stone Removal', 'Prostate Surgery', 'Uro-Oncology', 'Pediatric Urology'],
-    gallery: [],
-    keywords: ['urology', 'urologist', 'kidney stone'],
     faqs: []
   },
 ];

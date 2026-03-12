@@ -30,7 +30,7 @@ const SpecialtiesSection: React.FC = () => {
               <EditableText
                 as="p"
                 configKey="specialties.description"
-                defaultValue="Discover our comprehensive range of medical specialties, where advanced technology meets compassionate care to provide the best possible treatment for our patients."
+                defaultValue=""
                 className="mt-6 text-lg text-gray-500 max-w-2xl leading-relaxed"
                 data-id="specialties-description"
               />
@@ -42,22 +42,24 @@ const SpecialtiesSection: React.FC = () => {
                   key={index}
                   href={`#${specialty.id}`}
                   onClick={(e) => handleNavClick(e, specialty.id)}
-                  className="group flex items-center p-3 rounded-xl hover:bg-white hover:shadow-xl transition-all duration-300 border border-transparent hover:border-teal-50 hover:scale-[1.02] active:scale-95"
+                  className="group flex items-center transition-all duration-300 hover:translate-x-2"
                 >
-                  <div className="flex-shrink-0 w-20 h-20 flex items-center justify-center rounded-xl bg-teal-50 group-hover:bg-[#00B5A5] transition-all duration-300 shadow-sm group-hover:shadow-teal-100">
+                  <div className="flex-shrink-0 transition-transform duration-300 group-hover:scale-110">
                     <EditableImage 
                       configKey={specialty.iconPath} 
                       alt={specialty.name}
-                      className="h-10 w-10 object-contain brightness-0 group-hover:brightness-0 group-hover:invert transition-all duration-300"
+                      className="h-16 w-16 object-contain"
                     />
                   </div>
-                  <EditableText
-                    as="span"
-                    configKey={`specialties.list[${index}].name`}
-                    defaultValue={specialty.name}
-                    className="ml-4 text-sm font-bold text-[#0E2A47] group-hover:text-[#00B5A5] transition-colors duration-200"
-                    data-id={`specialty-name-${index}`}
-                  />
+                  <div className="ml-6 flex-grow py-4 border-b border-gray-100 group-last:border-none transition-colors duration-300 group-hover:border-teal-200">
+                    <EditableText
+                      as="span"
+                      configKey={`specialties.list[${index}].name`}
+                      defaultValue={specialty.name}
+                      className="text-base font-bold text-[#0E2A47] group-hover:text-[#00B5A5] transition-colors duration-200"
+                      data-id={`specialty-name-${index}`}
+                    />
+                  </div>
                 </a>
               ))}
             </div>

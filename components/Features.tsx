@@ -104,30 +104,30 @@ const Features: React.FC = () => {
 
                         <motion.div 
                             variants={itemVariants}
-                            className="grid grid-cols-3 gap-6 pt-10 border-t border-gray-100"
+                            className="grid grid-cols-3 gap-2 sm:gap-6 pt-10 border-t border-gray-100"
                         >
-                            <div className="group cursor-default">
-                                <div className="flex items-center space-x-3 mb-1">
-                                    <Globe className="w-5 h-5 text-[#00B5A5] group-hover:rotate-12 transition-transform" />
-                                    <EditableText as="h2" configKey="internationalPatients.stats.stat1.value" defaultValue="50+" className="text-2xl font-bold text-[#0E2A47]" />
+                            <div className="group cursor-default flex flex-col items-center text-center">
+                                <div className="flex items-center space-x-1 sm:space-x-3 mb-1">
+                                    <Globe className="w-4 h-4 sm:w-5 sm:h-5 text-[#00B5A5] group-hover:rotate-12 transition-transform" />
+                                    <EditableText as="h2" configKey="internationalPatients.stats.stat1.value" defaultValue="50+" className="text-xl sm:text-2xl font-bold text-[#0E2A47]" />
                                 </div>
-                                <EditableText as="p" configKey="internationalPatients.stats.stat1.label" defaultValue="Countries Served" className="text-[10px] uppercase tracking-widest text-gray-400 font-semibold" />
+                                <EditableText as="p" configKey="internationalPatients.stats.stat1.label" defaultValue="Countries Served" className="text-[9px] sm:text-[10px] uppercase tracking-widest text-[#8E8E93] font-bold leading-tight" />
                             </div>
                             
-                            <div className="group cursor-default">
-                                <div className="flex items-center space-x-3 mb-1">
-                                    <Users className="w-5 h-5 text-[#00B5A5] group-hover:scale-110 transition-transform" />
-                                    <EditableText as="h2" configKey="internationalPatients.stats.stat2.value" defaultValue="10K+" className="text-2xl font-bold text-[#0E2A47]" />
+                            <div className="group cursor-default flex flex-col items-center text-center">
+                                <div className="flex items-center space-x-1 sm:space-x-3 mb-1">
+                                    <Users className="w-4 h-4 sm:w-5 sm:h-5 text-[#00B5A5] group-hover:scale-110 transition-transform" />
+                                    <EditableText as="h2" configKey="internationalPatients.stats.stat2.value" defaultValue="10K+" className="text-xl sm:text-2xl font-bold text-[#0E2A47]" />
                                 </div>
-                                <EditableText as="p" configKey="internationalPatients.stats.stat2.label" defaultValue="Happy Patients" className="text-[10px] uppercase tracking-widest text-gray-400 font-semibold" />
+                                <EditableText as="p" configKey="internationalPatients.stats.stat2.label" defaultValue="Happy Patients" className="text-[9px] sm:text-[10px] uppercase tracking-widest text-[#8E8E93] font-bold leading-tight" />
                             </div>
                             
-                            <div className="group cursor-default">
-                                <div className="flex items-center space-x-3 mb-1">
-                                    <Award className="w-5 h-5 text-[#00B5A5] group-hover:-rotate-12 transition-transform" />
-                                    <EditableText as="h2" configKey="internationalPatients.stats.stat3.value" defaultValue="25+" className="text-2xl font-bold text-[#0E2A47]" />
+                            <div className="group cursor-default flex flex-col items-center text-center">
+                                <div className="flex items-center space-x-1 sm:space-x-3 mb-1">
+                                    <Award className="w-4 h-4 sm:w-5 sm:h-5 text-[#00B5A5] group-hover:-rotate-12 transition-transform" />
+                                    <EditableText as="h2" configKey="internationalPatients.stats.stat3.value" defaultValue="25+" className="text-xl sm:text-2xl font-bold text-[#0E2A47]" />
                                 </div>
-                                <EditableText as="p" configKey="internationalPatients.stats.stat3.label" defaultValue="Specialties" className="text-[10px] uppercase tracking-widest text-gray-400 font-semibold" />
+                                <EditableText as="p" configKey="internationalPatients.stats.stat3.label" defaultValue="Specialties" className="text-[9px] sm:text-[10px] uppercase tracking-widest text-[#8E8E93] font-bold leading-tight" />
                             </div>
                         </motion.div>
                     </div>
@@ -181,15 +181,17 @@ const Features: React.FC = () => {
                      {/* Mobile Image View */}
                     <motion.div 
                         variants={itemVariants}
-                        className="md:hidden mt-12 -mx-4 sm:-mx-6"
+                        className="md:hidden mt-12 w-full pt-4"
                     >
-                        <div className="relative overflow-hidden shadow-sm">
+                        <div className="relative overflow-hidden group">
                             <EditableImage
                                 configKey="internationalPatients.mainImage"
                                 defaultValue="/Standby/medical-tech-intl.jpg"
                                 alt="SilverLine Healthcare"
-                                className="w-full h-80 object-cover"
+                                className="w-full h-[400px] object-cover"
                             />
+                            {/* Inner soft glow/border over image */}
+                            <div className="absolute inset-0 ring-1 ring-inset ring-black/10 pointer-events-none"></div>
                         </div>
                     </motion.div>
                 </motion.div>
