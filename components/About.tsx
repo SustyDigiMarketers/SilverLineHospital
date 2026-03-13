@@ -85,7 +85,7 @@ const About: React.FC = () => {
                     <EditableText as="h2" configKey="about.wordWithCarousel.title" defaultValue="Our Commitment" className="text-4xl font-bold text-[#0E2A47] mb-6" />
                     <EditableText as="p" configKey="about.wordWithCarousel.message" defaultValue="" className="text-xl text-gray-600 leading-relaxed italic" />
                 </div>
-                <div className="flex-1 relative w-full h-[450px] rounded-[3rem] overflow-hidden shadow-2xl animate-on-scroll fade-in-right">
+                <div className="flex-1 relative w-full h-[300px] md:h-[450px] rounded-[3rem] overflow-hidden shadow-2xl animate-on-scroll fade-in-right">
                     {carouselImages.map((img: string, idx: number) => (
                         <div 
                             key={idx}

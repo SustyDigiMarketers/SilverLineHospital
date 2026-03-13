@@ -90,13 +90,23 @@ const AppointmentModal: React.FC<AppointmentModalProps> = ({ onClose }) => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitting(true);
     
-    // Simulate network delay for better UX
-    setTimeout(() => {
-        setIsSubmitting(false);
-        setIsSuccess(true);
-    }, 1500);
+    const form = e.target as HTMLFormElement;
+    const actionUrl = form.action;
+    const formData = new FormData(form);
+    
+    setIsSubmitting(false);
+    setIsSuccess(true);
+    
+    if (actionUrl && actionUrl !== window.location.href && !actionUrl.includes('YOUR_GOOGLE_SHEET_SCRIPT_URL_HERE')) {
+      fetch(actionUrl, {
+        method: 'POST',
+        body: formData,
+        mode: 'no-cors'
+      }).catch(error => {
+        console.error('Submission error:', error);
+      });
+    }
   };
   
   const inputStyles = "block w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-[#00B5A5] focus:border-[#00B5A5] transition duration-200 ease-in-out disabled:bg-gray-100 disabled:text-gray-400";
@@ -146,7 +156,7 @@ const AppointmentModal: React.FC<AppointmentModalProps> = ({ onClose }) => {
             </div>
         ) : (
             <>
-                <form ref={formRef} onSubmit={handleSubmit} className="p-6 md:p-8 overflow-y-auto space-y-6">
+                <form ref={formRef} action="YOUR_GOOGLE_SHEET_SCRIPT_URL_HERE" onSubmit={handleSubmit} className="p-6 md:p-8 overflow-y-auto space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                     <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">Full Name</label>

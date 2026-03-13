@@ -194,7 +194,7 @@ const Navbar: React.FC<NavbarProps> = ({ activeSection, onBookAppointmentClick, 
                   {/* TOP: Actions */}
                   <div className="flex items-center justify-between w-full mb-4">
                     {['Find Doctor', 'Emergency', 'Book Appointment', 'Patient Portal'].map((label, i) => {
-                      const sectionId = label.toLowerCase().replace(' ', '');
+                      const sectionId = label === 'Find Doctor' ? 'doctor' : label.toLowerCase().replace(' ', '');
                       const isActive = activeSection.toLowerCase() === sectionId;
                       return (
                         <motion.div key={label} custom={i} variants={menuVariants} initial="hidden" animate="visible">

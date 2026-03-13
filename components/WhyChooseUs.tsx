@@ -17,7 +17,7 @@ const features = [
   {
     Icon: Sparkles,
     configKey: 'cosmeticDentistry',
-    title: 'Cosmetic Dentistry',
+    title: 'Social Consciousness',
     description: 'Socially conscious organization.',
     color: 'text-amber-400',
     bg: 'bg-amber-400/10',
@@ -35,7 +35,7 @@ const features = [
   {
     Icon: Baby,
     configKey: 'pediatricDentistry',
-    title: 'Nursing Care',
+    title: 'Pediatric Dentistry',
     description: 'Dedicated and exclusive patient advice and liaison team.',
     color: 'text-purple-400',
     bg: 'bg-purple-400/10',
@@ -53,7 +53,7 @@ const features = [
   {
     Icon: ShieldPlus,
     configKey: 'periodontalTherapy',
-    title: 'Periodontal Therapy',
+    title: 'Nursing & Support',
     description: 'Dedicated nursing and paramedical support.',
     color: 'text-cyan-400',
     bg: 'bg-cyan-400/10',

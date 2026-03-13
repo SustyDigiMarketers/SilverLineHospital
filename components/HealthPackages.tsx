@@ -145,13 +145,13 @@ const HealthPackages: React.FC = () => {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-50px" }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 items-stretch relative z-10"
+            className="flex flex-wrap justify-start md:justify-center gap-10 items-stretch relative z-10"
           >
             {packages.map((pkg, index) => (
               <motion.div
                 key={index}
                 variants={cardVariants}
-                className={`group relative flex flex-col bg-white rounded-[2.5rem] p-10 transition-all duration-500 hover:shadow-[0_40px_80px_-20px_rgba(14,42,71,0.15)] border-2 ${
+                className={`w-full md:w-[calc(50%-1.25rem)] lg:w-[calc(33.333%-1.666rem)] group relative flex flex-col bg-white rounded-[2.5rem] p-10 transition-all duration-500 hover:shadow-[0_40px_80px_-20px_rgba(14,42,71,0.15)] border-2 ${
                   pkg.isPopular 
                     ? 'border-teal-500 ring-4 ring-teal-500/5 z-10' 
                     : 'border-gray-50 hover:border-teal-200'

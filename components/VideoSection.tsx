@@ -89,7 +89,7 @@ const VideoSection: React.FC = () => {
                             <video
                                 ref={videoRef}
                                 className="w-full h-full object-cover"
-                                poster="/Hero/hero1.jpg"
+                                poster="/Hero/Home1.jpg"
                                 onClick={togglePlay}
                                 onEnded={() => setIsPlaying(false)}
                             >

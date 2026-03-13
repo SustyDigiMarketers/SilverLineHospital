@@ -563,11 +563,11 @@ export const defaultContent = {
     image: 'imagePaths.whyChooseUs',
     features: {
       patientCare: { title: 'Patient Care', description: 'Empathy driven personalized patient care.' },
-      cosmeticDentistry: { title: 'Cosmetic Dentistry', description: 'Socially conscious organization.' },
+      cosmeticDentistry: { title: 'Social Consciousness', description: 'Socially conscious organization.' },
       experiencedTeam: { title: 'Experienced Team', description: 'Vastly experienced team of doctors with extensive clinical expertise.' },
-      pediatricDentistry: { title: 'Pediatric Dentistry', description: 'Dedicated and exclusive patient advice and liaison team.' },
+      pediatricDentistry: { title: 'Patient Advice & Liaison', description: 'Dedicated and exclusive patient advice and liaison team.' },
       affordableMedicines: { title: 'Affordable Medicines', description: 'High quality medical services made affordable.' },
-      periodontalTherapy: { title: 'Periodontal Therapy', description: 'Dedicated nursing and paramedical support.' }
+      periodontalTherapy: { title: 'Nursing & Support', description: 'Dedicated nursing and paramedical support.' }
     }
   },
   testimonials: {
@@ -627,7 +627,7 @@ export const defaultContent = {
     wordWithCarousel: {
       title: 'Our Commitment to Care',
       message: 'At SilverLine Hospital, our commitment to care goes beyond the clinical. We believe in building a community where every patient feels heard, valued, and respected. Each professional on our team is dedicated to providing the highest standard of medical care, combined with a compassionate touch that helps in speedier recovery and a more pleasant hospital experience.',
-      images: 'imagePaths.about.carousel',
+      images: ['/Standby/Our Commitment.jpg'],
     },
     team: {
       title: 'Meet Our Dedicated Team',
@@ -641,7 +641,7 @@ export const defaultContent = {
     sideBySide: {
       title: 'State-of-the-Art Facilities',
       description: 'We invest in the latest medical technology and state-of-the-art facilities to ensure our patients receive the most accurate diagnoses and effective treatments. Our modern infrastructure is designed for patient comfort and safety, providing a healing environment for all.',
-      image: 'imagePaths.about.sideImage'
+      image: '/Standby/Stateofart.jpg'
     },
     aboutContent: {
       tagline: 'Caring for Your Smile,<br /> Enhancing life',
@@ -771,7 +771,8 @@ export const defaultContent = {
     info: {
       title: 'Get in Touch',
       address: 'No: 3/332, Chennai National Highways, Palur, Trichy.',
-      phone: '+91 96773 36097 / 0431 276 0030',
+      landline: '0431-2906470 / 71',
+      mobile: '96773 36097',
       email: 'contact@silverlinehospital.com',
       hoursTitle: 'Opening Hours:',
       hoursWeekdays: 'Mon - Fri: 9:00 AM - 6:00 PM',
