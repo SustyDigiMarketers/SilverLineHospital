@@ -35,7 +35,7 @@ const features = [
   {
     Icon: Baby,
     configKey: 'pediatricDentistry',
-    title: 'Pediatric Dentistry',
+    title: 'Nursing Care',
     description: 'Dedicated and exclusive patient advice and liaison team.',
     color: 'text-purple-400',
     bg: 'bg-purple-400/10',
