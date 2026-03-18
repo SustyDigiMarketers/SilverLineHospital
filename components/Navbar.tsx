@@ -170,6 +170,46 @@ const Navbar: React.FC<NavbarProps> = ({ activeSection, onBookAppointmentClick, 
       <header 
         className={`sticky md:fixed top-0 left-0 w-full z-50 transition-all duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)] ${isScrolled ? 'md:py-4 py-0' : 'py-0'} ${mounted ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'}`}
       >
+        {/* Scrolling News Ticker - Only visible when scrolled (scrolled state) */}
+        {isScrolled && (
+            <div className="w-full bg-[#0E2A47]/95 backdrop-blur-md text-white py-2 overflow-hidden border-b border-[#00B5A5]/30 relative z-[60]">
+                <div className="container mx-auto px-4 md:max-w-6xl">
+                    <div className="relative flex items-center">
+                        <div className="absolute left-0 bg-[#0E2A47] pr-4 z-10 flex items-center gap-2">
+                            <span className="w-2 h-2 bg-teal-400 rounded-full animate-pulse"></span>
+                            <span className="text-[10px] font-black uppercase tracking-widest text-[#00B5A5]">News</span>
+                        </div>
+                        <div className="flex animate-marquee whitespace-nowrap pl-20">
+                            {[
+                                "24/7 Emergency Care Available",
+                                "New Cardiology Wing Opening Soon",
+                                "Special Health Checkup Packages @ 50% Off",
+                                "Leading Specialists in Robotic Surgery",
+                                "Free Tele-consultation for Foreign Patients"
+                            ].map((v, i) => (
+                                <span key={i} className="mx-10 text-[11px] font-bold uppercase tracking-wider flex items-center gap-x-3">
+                                    {v}
+                                    <span className="w-1 h-1 bg-white/30 rounded-full"></span>
+                                </span>
+                            ))}
+                            {[
+                                "24/7 Emergency Care Available",
+                                "New Cardiology Wing Opening Soon",
+                                "Special Health Checkup Packages @ 50% Off",
+                                "Leading Specialists in Robotic Surgery",
+                                "Free Tele-consultation for Foreign Patients"
+                            ].map((v, i) => (
+                                <span key={`dup-${i}`} className="mx-10 text-[11px] font-bold uppercase tracking-wider flex items-center gap-x-3">
+                                    {v}
+                                    <span className="w-1 h-1 bg-white/30 rounded-full"></span>
+                                </span>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        )}
+
         <div 
           className={`container mx-auto transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${
             isScrolled 
@@ -177,36 +217,6 @@ const Navbar: React.FC<NavbarProps> = ({ activeSection, onBookAppointmentClick, 
               : 'max-w-full px-0'
           }`}
         >
-          {/* News Scrolling Ticker - Only in Scrolled/Sticky State */}
-          <div className={`overflow-hidden transition-all duration-500 ease-in-out ${isScrolled ? 'max-h-12 opacity-100 py-1' : 'max-h-0 opacity-0 py-0'}`}>
-            <div className="flex items-center bg-transparent backdrop-blur-md px-4 md:px-8 mb-1 md:mb-2 rounded-full overflow-hidden">
-                <div className="flex-shrink-0 bg-[#1d3f7f] text-white text-[10px] md:text-xs font-black px-3 py-1 rounded-full uppercase tracking-tighter mr-4 shadow-lg shadow-[#1d3f7f]/10 flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#00B5A5] animate-pulse"></span>
-                    News
-                </div>
-                <div className="flex-grow overflow-hidden relative">
-                    <div className="animate-marquee whitespace-nowrap flex items-center gap-x-16">
-                        <span className="text-[11px] md:text-sm font-bold text-[#0E2A47] opacity-80 uppercase flex items-center gap-2 tracking-tight">
-                            NABH Accredited Tertiary Care Hospital for Excellence in Medical Service
-                        </span>
-                        <span className="text-[11px] md:text-sm font-bold text-[#1d3f7f] opacity-80 uppercase flex items-center gap-2 tracking-tight">
-                            SilverLine Hospital: 24/7 Cardiology & Trauma Care Services Available
-                        </span>
-                        <span className="text-[11px] md:text-sm font-bold text-[#00B5A5] opacity-80 uppercase flex items-center gap-2 tracking-tight underline decoration-2 decoration-[#00B5A5]/20 underline-offset-4">
-                            New: Advanced Robotic Laparoscopic Surgery Center Now Open
-                        </span>
-                        {/* Duplicate for seamless loop */}
-                        <span className="text-[11px] md:text-sm font-bold text-[#0E2A47] opacity-80 uppercase flex items-center gap-2 tracking-tight">
-                            NABH Accredited Tertiary Care Hospital for Excellence in Medical Service
-                        </span>
-                        <span className="text-[11px] md:text-sm font-bold text-[#1d3f7f] opacity-80 uppercase flex items-center gap-2 tracking-tight">
-                            SilverLine Hospital: 24/7 Cardiology & Trauma Care Services Available
-                        </span>
-                    </div>
-                </div>
-            </div>
-          </div>
-
           <motion.nav
             layout
             className={`relative transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${
