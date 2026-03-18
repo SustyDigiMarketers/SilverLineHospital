@@ -170,45 +170,38 @@ const Navbar: React.FC<NavbarProps> = ({ activeSection, onBookAppointmentClick, 
       <header 
         className={`sticky md:fixed top-0 left-0 w-full z-50 transition-all duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)] ${isScrolled ? 'md:py-4 py-0' : 'py-0'} ${mounted ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'}`}
       >
-        {/* Scrolling News Ticker - Only visible when scrolled (scrolled state) */}
-        {isScrolled && (
-            <div className="w-full bg-[#0E2A47]/95 backdrop-blur-md text-white py-2 overflow-hidden border-b border-[#00B5A5]/30 relative z-[60]">
-                <div className="container mx-auto px-4 md:max-w-6xl">
-                    <div className="relative flex items-center">
-                        <div className="absolute left-0 bg-[#0E2A47] pr-4 z-10 flex items-center gap-2">
-                            <span className="w-2 h-2 bg-teal-400 rounded-full animate-pulse"></span>
-                            <span className="text-[10px] font-black uppercase tracking-widest text-[#00B5A5]">News</span>
-                        </div>
-                        <div className="flex animate-marquee whitespace-nowrap pl-20">
-                            {[
-                                "24/7 Emergency Care Available",
-                                "New Cardiology Wing Opening Soon",
-                                "Special Health Checkup Packages @ 50% Off",
-                                "Leading Specialists in Robotic Surgery",
-                                "Free Tele-consultation for Foreign Patients"
-                            ].map((v, i) => (
-                                <span key={i} className="mx-10 text-[11px] font-bold uppercase tracking-wider flex items-center gap-x-3">
-                                    {v}
-                                    <span className="w-1 h-1 bg-white/30 rounded-full"></span>
-                                </span>
-                            ))}
-                            {[
-                                "24/7 Emergency Care Available",
-                                "New Cardiology Wing Opening Soon",
-                                "Special Health Checkup Packages @ 50% Off",
-                                "Leading Specialists in Robotic Surgery",
-                                "Free Tele-consultation for Foreign Patients"
-                            ].map((v, i) => (
-                                <span key={`dup-${i}`} className="mx-10 text-[11px] font-bold uppercase tracking-wider flex items-center gap-x-3">
-                                    {v}
-                                    <span className="w-1 h-1 bg-white/30 rounded-full"></span>
-                                </span>
-                            ))}
-                        </div>
-                    </div>
-                </div>
-            </div>
-        )}
+        {/* News Ticker Bar - Persists on mobile, hides on desktop scrolled (pills view) */}
+        <div className={`w-full bg-[#0E2A47] text-white py-1.5 overflow-hidden transition-all duration-500 border-b border-white/5 ${isScrolled ? 'md:h-0 md:opacity-0 md:pointer-events-none' : 'h-auto opacity-100'}`}>
+           <div className="flex whitespace-nowrap animate-marquee">
+              <div className="flex px-4 md:px-0">
+                  <span className="px-10 font-bold text-[10px] md:text-xs uppercase tracking-[0.2em] flex items-center">
+                    <span className="w-1.5 h-1.5 bg-[#27afaf] rounded-full mr-3 animate-pulse"></span>
+                    Advanced Robotic Surgery Now Available
+                  </span>
+                  <span className="px-10 font-bold text-[10px] md:text-xs uppercase tracking-[0.2em] flex items-center">
+                    <span className="w-1.5 h-1.5 bg-[#27afaf] rounded-full mr-3 animate-pulse"></span>
+                    24/7 Emergency & Critical Care Services
+                  </span>
+                  <span className="px-10 font-bold text-[10px] md:text-xs uppercase tracking-[0.2em] flex items-center">
+                    <span className="w-1.5 h-1.5 bg-[#27afaf] rounded-full mr-3 animate-pulse"></span>
+                    Free Health Checkup Packages for Seniors
+                  </span>
+                  {/* Duplicate for seamless marquee effect */}
+                  <span className="px-10 font-bold text-[10px] md:text-xs uppercase tracking-[0.2em] flex items-center">
+                    <span className="w-1.5 h-1.5 bg-[#27afaf] rounded-full mr-3 animate-pulse"></span>
+                    Advanced Robotic Surgery Now Available
+                  </span>
+                  <span className="px-10 font-bold text-[10px] md:text-xs uppercase tracking-[0.2em] flex items-center">
+                    <span className="w-1.5 h-1.5 bg-[#27afaf] rounded-full mr-3 animate-pulse"></span>
+                    24/7 Emergency & Critical Care Services
+                  </span>
+                  <span className="px-10 font-bold text-[10px] md:text-xs uppercase tracking-[0.2em] flex items-center">
+                    <span className="w-1.5 h-1.5 bg-[#27afaf] rounded-full mr-3 animate-pulse"></span>
+                    Free Health Checkup Packages for Seniors
+                  </span>
+              </div>
+           </div>
+        </div>
 
         <div 
           className={`container mx-auto transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${
