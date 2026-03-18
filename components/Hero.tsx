@@ -74,7 +74,7 @@ const Hero: React.FC = () => {
     <section 
       id="home" 
       style={{ position: 'relative', overflow: 'hidden' }} 
-      className="relative w-full overflow-hidden h-[200px] md:h-[500px]"
+      className="relative w-full overflow-hidden h-[200px] md:h-[500px] lg:h-[600px] xl:h-[650px]"
       aria-roledescription="carousel"
       aria-label="Hero Carousel"
     >
