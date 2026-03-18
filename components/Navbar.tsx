@@ -177,6 +177,36 @@ const Navbar: React.FC<NavbarProps> = ({ activeSection, onBookAppointmentClick, 
               : 'max-w-full px-0'
           }`}
         >
+          {/* News Scrolling Ticker - Only in Scrolled/Sticky State */}
+          <div className={`overflow-hidden transition-all duration-500 ease-in-out ${isScrolled ? 'max-h-12 opacity-100 py-1' : 'max-h-0 opacity-0 py-0'}`}>
+            <div className="flex items-center bg-transparent backdrop-blur-md px-4 md:px-8 mb-1 md:mb-2 rounded-full overflow-hidden">
+                <div className="flex-shrink-0 bg-[#1d3f7f] text-white text-[10px] md:text-xs font-black px-3 py-1 rounded-full uppercase tracking-tighter mr-4 shadow-lg shadow-[#1d3f7f]/10 flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#00B5A5] animate-pulse"></span>
+                    News
+                </div>
+                <div className="flex-grow overflow-hidden relative">
+                    <div className="animate-marquee whitespace-nowrap flex items-center gap-x-16">
+                        <span className="text-[11px] md:text-sm font-bold text-[#0E2A47] opacity-80 uppercase flex items-center gap-2 tracking-tight">
+                            NABH Accredited Tertiary Care Hospital for Excellence in Medical Service
+                        </span>
+                        <span className="text-[11px] md:text-sm font-bold text-[#1d3f7f] opacity-80 uppercase flex items-center gap-2 tracking-tight">
+                            SilverLine Hospital: 24/7 Cardiology & Trauma Care Services Available
+                        </span>
+                        <span className="text-[11px] md:text-sm font-bold text-[#00B5A5] opacity-80 uppercase flex items-center gap-2 tracking-tight underline decoration-2 decoration-[#00B5A5]/20 underline-offset-4">
+                            New: Advanced Robotic Laparoscopic Surgery Center Now Open
+                        </span>
+                        {/* Duplicate for seamless loop */}
+                        <span className="text-[11px] md:text-sm font-bold text-[#0E2A47] opacity-80 uppercase flex items-center gap-2 tracking-tight">
+                            NABH Accredited Tertiary Care Hospital for Excellence in Medical Service
+                        </span>
+                        <span className="text-[11px] md:text-sm font-bold text-[#1d3f7f] opacity-80 uppercase flex items-center gap-2 tracking-tight">
+                            SilverLine Hospital: 24/7 Cardiology & Trauma Care Services Available
+                        </span>
+                    </div>
+                </div>
+            </div>
+          </div>
+
           <motion.nav
             layout
             className={`relative transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${
