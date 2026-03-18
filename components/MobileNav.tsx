@@ -56,9 +56,9 @@ const MobileNav: React.FC<MobileNavProps> = ({ activeSection, pageInfo }) => {
                         >
                             {/* Sliding Active Background Pill */}
                             {isActive && (
-                                <motion.div
+                                   <motion.div
                                     layoutId="navPillBackground"
-                                    className="absolute inset-0 bg-gradient-to-b from-[#00B5A5]/10 to-[#00B5A5]/5 rounded-2xl"
+                                    className="absolute inset-0 bg-gradient-to-b from-[#00B5A5]/10 to-[#00B5A5]/5 rounded-2xl mobile-nav-pill"
                                     transition={{ type: "spring", stiffness: 400, damping: 30, mass: 0.8 }}
                                     style={{ 
                                         boxShadow: 'inset 0 2px 10px rgba(0, 181, 165, 0.05)'

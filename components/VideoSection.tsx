@@ -90,6 +90,8 @@ const VideoSection: React.FC = () => {
                                 ref={videoRef}
                                 className="w-full h-full object-cover"
                                 poster="/Hero/Home1.jpg"
+                                preload="metadata"
+                                playsInline
                                 onClick={togglePlay}
                                 onEnded={() => setIsPlaying(false)}
                             >

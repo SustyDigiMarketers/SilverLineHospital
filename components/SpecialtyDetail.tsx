@@ -74,9 +74,10 @@ const SpecialtyDetail: React.FC<SpecialtyDetailProps> = ({ specialtyId, onBookAp
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
 
   const relatedSpecialties = useMemo(() => {
     if (!specialty) return [];
@@ -115,7 +116,7 @@ const SpecialtyDetail: React.FC<SpecialtyDetailProps> = ({ specialtyId, onBookAp
     <>
       {/* Hero Section */}
       <section 
-        className="relative h-[350px] md:h-[500px] flex items-center justify-center text-white overflow-hidden"
+        className="relative h-[350px] md:h-[550px] flex items-center justify-center text-white overflow-hidden"
       >
         <EditableImage 
           configKey={specialty.heroImage}

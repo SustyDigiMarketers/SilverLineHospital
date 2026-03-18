@@ -53,7 +53,7 @@ const StatsBar: React.FC = () => {
   return (
     <section 
       id="stats-bar" 
-      className="relative bg-cover bg-center bg-fixed"
+      className="relative bg-cover bg-center bg-scroll md:bg-fixed"
       style={{ backgroundImage: `url('${bgImage}')` }}
     >
         <div className="absolute inset-0 bg-black/40"></div>

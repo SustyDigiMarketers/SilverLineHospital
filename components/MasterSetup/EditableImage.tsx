@@ -22,7 +22,9 @@ interface EditableImageProps {
   style?: React.CSSProperties;
   defaultValue?: string;
   priority?: boolean;
+  loading?: "lazy" | "eager";
 }
+
 
 const EditableImage: React.FC<EditableImageProps> = ({
   configKey,
@@ -31,7 +33,9 @@ const EditableImage: React.FC<EditableImageProps> = ({
   style,
   defaultValue = '',
   priority = false,
+  loading,
 }) => {
+
   const { isMasterMode, config, updateConfig } = useContext(MasterSetupContext);
 
   const pathOrUrl = getNestedObjectValue(config, configKey) ?? defaultValue;
@@ -70,8 +74,18 @@ const EditableImage: React.FC<EditableImageProps> = ({
   };
 
   if (!isMasterMode) {
-    return <img src={src} alt={alt} className={className} style={style} loading="lazy" />;
+    return (
+      <img 
+        src={src} 
+        alt={alt} 
+        className={className} 
+        style={style} 
+        loading={priority ? "eager" : (loading || "lazy")} 
+        {...(priority ? { fetchpriority: "high" } : {})}
+      />
+    );
   }
+
 
   return (
     <div
@@ -83,7 +97,7 @@ const EditableImage: React.FC<EditableImageProps> = ({
         src={src}
         alt={alt}
         className="w-full h-full object-cover" 
-        loading={priority ? "eager" : "lazy"}
+        loading={priority ? "eager" : (loading || "lazy")}
         {...(priority ? { fetchpriority: "high" } : {})}
       />
       <div

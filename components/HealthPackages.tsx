@@ -96,7 +96,11 @@ const cardVariants = {
   }
 };
 
-const HealthPackages: React.FC = () => {
+interface HealthPackagesProps {
+  onBookPackageClick?: (type: 'Appointment' | 'Package', pkgName: string) => void;
+}
+
+const HealthPackages: React.FC<HealthPackagesProps> = ({ onBookPackageClick }) => {
   const { config } = useContext(MasterSetupContext);
   const heroImageKey = config.packages?.heroImage || '';
 
@@ -195,8 +199,8 @@ const HealthPackages: React.FC = () => {
                   ))}
                 </ul>
 
-                <a
-                  href="#appointment"
+                <button
+                  onClick={() => onBookPackageClick?.('Package', pkg.name)}
                   className={`w-full block text-center px-8 py-5 font-bold rounded-2xl transition-all duration-300 transform active:scale-95 ${
                     pkg.isPopular
                       ? 'bg-[#0E2A47] text-white hover:bg-teal-600 hover:shadow-[0_20px_40px_-10px_rgba(0,181,165,0.4)]'
@@ -204,12 +208,13 @@ const HealthPackages: React.FC = () => {
                   }`}
                 >
                   Book Package Now
-                </a>
+                </button>
               </motion.div>
             ))}
           </motion.div>
         </div>
       </section>
+
 
       {/* How it Works / Process Section */}
       <section className="py-20 bg-white relative overflow-hidden">

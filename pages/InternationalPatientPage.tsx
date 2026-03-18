@@ -1,5 +1,8 @@
-import React from 'react';
 import PageHero from '../components/PageHero';
+
+interface InternationalPatientPageProps {
+  onBookAppointmentClick: (type: 'Foregin PT') => void;
+}
 
 const services = [
   {
@@ -47,7 +50,7 @@ const quickLinks = [
   { title: 'FAQs', icon: 'M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z' }
 ];
 
-const InternationalPatientPage: React.FC = () => {
+const InternationalPatientPage: React.FC<InternationalPatientPageProps> = ({ onBookAppointmentClick }) => {
   return (
     <div className="bg-slate-50 min-h-screen">
       <PageHero 
@@ -123,7 +126,12 @@ const InternationalPatientPage: React.FC = () => {
         <div className="container mx-auto max-w-6xl px-4 sm:px-6">
            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 lg:gap-6 justify-center">
              {quickLinks.map((link, idx) => (
-               <div key={idx} className="flex flex-col items-center justify-center p-6 bg-white/70 backdrop-blur-md rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-white/80 transition-all duration-500 hover:shadow-[0_20px_40px_-10px_rgba(225,29,72,0.2)] hover:-translate-y-2 hover:border-[#E11D48]/30 group cursor-pointer animate-on-scroll fade-in-up" style={{ animationDelay: `${idx * 50}ms` }}>
+                <div 
+                  key={idx} 
+                  onClick={() => link.title === 'Appointments' && onBookAppointmentClick('Foregin PT')}
+                  className="flex flex-col items-center justify-center p-6 bg-white/70 backdrop-blur-md rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-white/80 transition-all duration-500 hover:shadow-[0_20px_40px_-10px_rgba(225,29,72,0.2)] hover:-translate-y-2 hover:border-[#E11D48]/30 group cursor-pointer animate-on-scroll fade-in-up" 
+                  style={{ animationDelay: `${idx * 50}ms` }}
+                >
                   <div className="w-16 h-16 rounded-full bg-slate-50 flex items-center justify-center mb-4 transition-all duration-500 group-hover:bg-[#E11D48]/10 group-hover:scale-110">
                      <svg className="w-8 h-8 text-[#E11D48] transition-colors duration-500 group-hover:text-[#E11D48]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d={link.icon}></path></svg>
                   </div>
@@ -149,9 +157,17 @@ const InternationalPatientPage: React.FC = () => {
                 Certificate
               </button>
               
-              <p className="text-[#0E2A47] mb-2 relative z-10">To know more about our service call now</p>
-              <div className="bg-[#E11D48] text-white font-bold py-2 px-6 rounded-md shadow-md inline-block relative z-10">
-                at 044 40006000
+              <p className="text-[#0E2A47] mb-4 relative z-10">To know more about our service call now or register online</p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center relative z-10">
+                <div className="bg-[#E11D48] text-white font-bold py-3 px-8 rounded-md shadow-md">
+                  at 044 40006000
+                </div>
+                <button 
+                  onClick={() => onBookAppointmentClick('Foregin PT')}
+                  className="bg-[#0E2A47] text-white font-bold py-3 px-8 rounded-md shadow-md hover:bg-[#00B5A5] transition-colors"
+                >
+                  Online Registration
+                </button>
               </div>
            </div>
         </div>

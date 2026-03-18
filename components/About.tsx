@@ -30,7 +30,7 @@ const About: React.FC = () => {
     <div id="aboutus" className="relative">
       {/* 1. SINGLE IMAGE HERO SECTION */}
       <section 
-        className="relative h-[200px] md:h-[450px] flex items-center justify-center text-white overflow-hidden"
+        className="relative h-[200px] md:h-[500px] flex items-center justify-center text-white overflow-hidden"
       >
         <div className="absolute inset-0 w-full h-full">
             <EditableImage

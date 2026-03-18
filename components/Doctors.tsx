@@ -157,7 +157,13 @@ const Doctors: React.FC = () => {
                       aria-label={`View profile for ${doctor.name}`}
                     >
                       <div className="relative h-80 overflow-hidden">
-                        <img src={imageUrl} alt={doctor.name} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                        <img 
+                          src={imageUrl} 
+                          alt={doctor.name} 
+                          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" 
+                          loading="lazy"
+                        />
+
                         
                         <div className="absolute inset-0 bg-gradient-to-t from-[#0E2A47]/95 via-[#0E2A47]/70 to-transparent opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-all duration-500 flex flex-col justify-end p-6 text-left backdrop-blur-[2px]">
                           <div className="transition-all duration-300 transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:translate-y-0 group-focus-within:opacity-100 delay-100">

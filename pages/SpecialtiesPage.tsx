@@ -30,7 +30,7 @@ const SpecialtiesPage: React.FC = () => {
         <>
             {/* Full-width Hero Section at the top */}
             <section 
-                className="relative h-[200px] md:h-[450px] flex items-center justify-center text-white overflow-hidden"
+                className="relative h-[200px] md:h-[500px] flex items-center justify-center text-white overflow-hidden"
             >
                 <EditableImage
                     configKey="specialtiesPage.heroImage"

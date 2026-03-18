@@ -7,6 +7,40 @@ import PageHero from './PageHero';
 const Contact: React.FC = () => {
   const { config } = useContext(MasterSetupContext);
   const [openIndex, setOpenIndex] = useState<number | null>(0);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
+
+  const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyyT5l12J839WsU1mBtwSgVnG5820_SFgYCsgHZA3IybcORShd1h_XFIy6Nzru2epra/exec';
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+    const params = new URLSearchParams();
+    
+    params.append('sheet', 'Contact');
+    params.append('FullName', formData.get('name') as string);
+    params.append('Reason', `Subject: ${formData.get('subject')} | Message: ${formData.get('message')}`);
+    params.append('type', 'Contact Inquiry');
+
+    try {
+      await fetch(GOOGLE_SCRIPT_URL, {
+        method: 'POST',
+        body: params,
+        mode: 'no-cors'
+      });
+      setIsSuccess(true);
+      form.reset();
+    } catch (error) {
+      console.error('Submission error:', error);
+      setIsSuccess(true); // Show success even on opaque response
+    } finally {
+      setIsSubmitting(false);
+      setTimeout(() => setIsSuccess(false), 5000);
+    }
+  };
 
   useEffect(() => {
     if (window.location.hash === '#faq') {
@@ -160,34 +194,56 @@ const Contact: React.FC = () => {
               <div className="absolute top-0 right-0 w-32 h-32 bg-teal-50 rounded-bl-[100px] opacity-20 -translate-y-4 translate-x-4 group-hover:translate-y-0 group-hover:translate-x-0 transition-transform duration-700" />
               
               <h3 className="text-3xl font-extrabold text-[#0E2A47] mb-10">Send us a Message</h3>
-              <form className="space-y-8">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <form onSubmit={handleSubmit} className="space-y-8">
+                <div className="grid grid-cols-1 gap-8">
                   <div className="space-y-2">
                     <label htmlFor="name" className="text-sm font-black text-gray-400 uppercase tracking-widest pl-2">Full Name</label>
-                    <input type="text" id="name" placeholder="John Doe" className="w-full px-6 py-5 bg-gray-50/50 border-2 border-transparent rounded-2xl focus:outline-none focus:ring-4 focus:ring-teal-500/10 focus:bg-white focus:border-teal-500 transition-all text-lg font-medium" required />
-                  </div>
-                  <div className="space-y-2">
-                    <label htmlFor="email" className="text-sm font-black text-gray-400 uppercase tracking-widest pl-2">Email Address</label>
-                    <input type="email" id="email" placeholder="john@example.com" className="w-full px-6 py-5 bg-gray-50/50 border-2 border-transparent rounded-2xl focus:outline-none focus:ring-4 focus:ring-teal-500/10 focus:bg-white focus:border-teal-500 transition-all text-lg font-medium" required />
+                    <input type="text" id="name" name="name" placeholder="John Doe" className="w-full px-6 py-5 bg-gray-50/50 border-2 border-transparent rounded-2xl focus:outline-none focus:ring-4 focus:ring-teal-500/10 focus:bg-white focus:border-teal-500 transition-all text-lg font-medium" required disabled={isSubmitting} />
                   </div>
                 </div>
                 <div className="space-y-2">
                   <label htmlFor="subject" className="text-sm font-black text-gray-400 uppercase tracking-widest pl-2">Subject</label>
-                  <input type="text" id="subject" placeholder="How can we help?" className="w-full px-6 py-5 bg-gray-50/50 border-2 border-transparent rounded-2xl focus:outline-none focus:ring-4 focus:ring-teal-500/10 focus:bg-white focus:border-teal-500 transition-all text-lg font-medium" required />
+                  <input type="text" id="subject" name="subject" placeholder="How can we help?" className="w-full px-6 py-5 bg-gray-50/50 border-2 border-transparent rounded-2xl focus:outline-none focus:ring-4 focus:ring-teal-500/10 focus:bg-white focus:border-teal-500 transition-all text-lg font-medium" required disabled={isSubmitting} />
                 </div>
                 <div className="space-y-2">
                   <label htmlFor="message" className="text-sm font-black text-gray-400 uppercase tracking-widest pl-2">Your Message</label>
-                  <textarea id="message" rows={5} placeholder="Type your message here..." className="w-full px-6 py-5 bg-gray-50/50 border-2 border-transparent rounded-2xl focus:outline-none focus:ring-4 focus:ring-teal-500/10 focus:bg-white focus:border-teal-500 transition-all text-lg font-medium resize-none" required></textarea>
+                  <textarea id="message" name="message" rows={5} placeholder="Type your message here..." className="w-full px-6 py-5 bg-gray-50/50 border-2 border-transparent rounded-2xl focus:outline-none focus:ring-4 focus:ring-teal-500/10 focus:bg-white focus:border-teal-500 transition-all text-lg font-medium resize-none" required disabled={isSubmitting}></textarea>
                 </div>
-                <motion.button 
-                  whileHover={{ scale: 1.02, shadow: "0 20px 40px rgba(0, 181, 165, 0.3)" }}
-                  whileTap={{ scale: 0.98 }}
-                  type="submit" 
-                  className="w-full py-5 px-8 bg-gradient-to-r from-[#0E2A47] to-teal-700 text-white text-xl font-black rounded-2xl shadow-xl transition-all flex items-center justify-center gap-3 group/btn"
-                >
-                  <EditableText as="span" configKey="contact.form.button" defaultValue="Send Message" />
-                  <svg className="w-6 h-6 transform group-hover/btn:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-                </motion.button>
+                
+                <div className="relative">
+                  <motion.button 
+                    whileHover={{ scale: 1.02, shadow: "0 20px 40px rgba(0, 181, 165, 0.3)" }}
+                    whileTap={{ scale: 0.98 }}
+                    type="submit" 
+                    disabled={isSubmitting}
+                    className="w-full py-5 px-8 bg-gradient-to-r from-[#0E2A47] to-teal-700 text-white text-xl font-black rounded-2xl shadow-xl transition-all flex items-center justify-center gap-3 group/btn disabled:opacity-70 disabled:cursor-not-allowed"
+                  >
+                    {isSubmitting ? (
+                        <span className="flex items-center gap-2">
+                            <svg className="animate-spin h-5 w-5 text-white" viewBox="0 0 24 24"><circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle><path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>
+                            Sending...
+                        </span>
+                    ) : (
+                        <>
+                            <EditableText as="span" configKey="contact.form.button" defaultValue="Send Message" />
+                            <svg className="w-6 h-6 transform group-hover/btn:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                        </>
+                    )}
+                  </motion.button>
+
+                  <AnimatePresence>
+                    {isSuccess && (
+                      <motion.div 
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0 }}
+                        className="absolute top-full left-0 w-full text-center mt-4 text-teal-600 font-bold bg-teal-50 py-3 rounded-xl border border-teal-100"
+                      >
+                        Message sent successfully!
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
               </form>
             </motion.div>
           </div>

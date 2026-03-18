@@ -9,7 +9,8 @@ const easeOutCubic = (t: number): number => --t * t * t + 1;
  * @returns - An object containing the current count and a ref to attach to the element.
  */
 export const useCountUp = (endValue: number, duration: number = 2000) => {
-    const [count, setCount] = useState(0);
+    const isMobile = typeof navigator !== 'undefined' && /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+    const [count, setCount] = useState(isMobile ? endValue : 0);
     const ref = useRef<HTMLSpanElement>(null);
     const animationFrameRef = useRef<number | null>(null);
 
@@ -27,6 +28,8 @@ export const useCountUp = (endValue: number, duration: number = 2000) => {
     };
 
     useEffect(() => {
+        if (isMobile) return; // Skip animation on mobile for better scrolling performance
+
         const node = ref.current;
         if (!node) return;
         
@@ -37,7 +40,7 @@ export const useCountUp = (endValue: number, duration: number = 2000) => {
                     observer.disconnect(); // Animate only once
                 }
             },
-            { threshold: 0.5 } // Trigger when 50% of the element is visible
+            { threshold: 0.1 } // Reduced threshold for mobile snappiness
         );
 
         observer.observe(node);
@@ -48,7 +51,7 @@ export const useCountUp = (endValue: number, duration: number = 2000) => {
                 cancelAnimationFrame(animationFrameRef.current);
             }
         };
-    }, [endValue, duration]); // Dependencies for the effect
+    }, [endValue, duration, isMobile]); // Dependencies for the effect
 
     return { count, ref };
 };

@@ -11,7 +11,7 @@ interface PageHeroProps {
 const PageHero: React.FC<PageHeroProps> = ({ title, backgroundImage, align = 'center' }) => {
   return (
     <section
-      className="relative h-[200px] md:h-[450px] flex items-center justify-center text-white overflow-hidden bg-[#0E2A47]"
+      className="relative h-[200px] md:h-[500px] flex items-center justify-center text-white overflow-hidden bg-[#0E2A47]"
     >
       <EditableImage 
         configKey={backgroundImage} 

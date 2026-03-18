@@ -1,32 +1,36 @@
-import React, { useState, useEffect, useRef, useMemo } from 'react';
+import React, { useState, useEffect, useRef, useMemo, Suspense, lazy } from 'react';
 import Navbar, { NavLink } from './components/Navbar';
-import About from './components/About';
-import Doctors from './components/Doctors';
-import HealthPackages from './components/HealthPackages';
-import Contact from './components/Contact';
 import Footer from './components/Footer';
-import EmergencyCare from './components/EmergencyCare';
-import PatientPortal from './components/PatientPortal';
 import AppointmentModal from './components/AppointmentModal';
 import MasterSetupPanel from './components/MasterSetup/MasterSetupPanel';
-import AdminLogin from './pages/AdminLogin';
-import MasterDashboard from './pages/MasterDashboard';
 import { useKonamiCode } from './hooks/useKonamiCode';
 import BackToTopButton from './components/BackToTopButton';
-import SpecialtiesPage from './pages/SpecialtiesPage';
-import SpecialtyDetail from './components/SpecialtyDetail';
 import PatientLoginModal from './components/PatientLoginModal';
-import BlogPage from './pages/BlogPage';
-import PostDetailPage from './pages/PostDetailPage';
-import DoctorBioPage from './pages/DoctorBioPage';
-import CareerPage from './pages/CareerPage';
-import MarketingPage from './pages/MarketingPage';
-import InternationalPatientPage from './pages/InternationalPatientPage';
-import GalleryPage from './pages/GalleryPage';
 import TimedPopup from './components/TimedPopup';
-import HomePage from './pages/HomePage';
 import MobileNav from './components/MobileNav';
 import { trackPageView } from './lib/analyticsService'; // Import tracking
+
+// Lazy load components/pages for better initial performance
+const About = lazy(() => import('./components/About'));
+const Doctors = lazy(() => import('./components/Doctors'));
+const HealthPackages = lazy(() => import('./components/HealthPackages'));
+const Contact = lazy(() => import('./components/Contact'));
+const EmergencyCare = lazy(() => import('./components/EmergencyCare'));
+const PatientPortal = lazy(() => import('./components/PatientPortal'));
+const AdminLogin = lazy(() => import('./pages/AdminLogin'));
+const MasterDashboard = lazy(() => import('./pages/MasterDashboard'));
+const SpecialtiesPage = lazy(() => import('./pages/SpecialtiesPage'));
+const SpecialtyDetail = lazy(() => import('./components/SpecialtyDetail'));
+const BlogPage = lazy(() => import('./pages/BlogPage'));
+const PostDetailPage = lazy(() => import('./pages/PostDetailPage'));
+const DoctorBioPage = lazy(() => import('./pages/DoctorBioPage'));
+const CareerPage = lazy(() => import('./pages/CareerPage'));
+const MarketingPage = lazy(() => import('./pages/MarketingPage'));
+const InternationalPatientPage = lazy(() => import('./pages/InternationalPatientPage'));
+const GalleryPage = lazy(() => import('./pages/GalleryPage'));
+const PatientServicesPage = lazy(() => import('./pages/PatientServicesPage'));
+const HomePage = lazy(() => import('./pages/HomePage'));
+
 
 
 const getPageInfoFromHash = () => {
@@ -54,17 +58,50 @@ const adminNavLinks: NavLink[] = [
 ];
 
 
+const linkNameMap: { [key: string]: string } = {
+    'home': '', 
+    'aboutus': 'About',
+    'healthpackages': 'Packages',
+    'contactus': 'Contact',
+    'doctor': 'Find Doctor',
+    'emergency': 'Emergency',
+    'patientportal': 'Patient Portal',
+};
+
+const pageToSectionMap: { [key: string]: string } = {
+    'blog': 'Blogs',
+    'post': 'Blogs',
+    'specialties': 'Specialties',
+    'specialty': 'Specialties',
+    'aboutus': 'About',
+    'healthpackages': 'Packages',
+    'contactus': 'Contact',
+    'doctor': 'Find Doctor',
+    'emergency': 'Emergency',
+    'patientportal': 'Patient Portal',
+};
+
 const App: React.FC = () => {
+
   const [pageInfo, setPageInfo] = useState(getPageInfoFromHash());
   const [isAppointmentModalOpen, setIsAppointmentModalOpen] = useState(false);
+  const [appointmentType, setAppointmentType] = useState<'Appointment' | 'Package' | 'Foregin PT' | 'Contact'>('Appointment');
+  const [selectedPackage, setSelectedPackage] = useState<string | null>(null);
   const [isPatientLoginModalOpen, setIsPatientLoginModalOpen] = useState(false);
   const [loggedInPatientId, setLoggedInPatientId] = useState<string | null>(null);
   const [activeSection, setActiveSection] = useState('');
   const observer = useRef<IntersectionObserver | null>(null);
   const scrollObserver = useRef<IntersectionObserver | null>(null);
 
-  const openAppointmentModal = () => setIsAppointmentModalOpen(true);
-  const closeAppointmentModal = () => setIsAppointmentModalOpen(false);
+  const openAppointmentModal = (type: 'Appointment' | 'Package' | 'Foregin PT' | 'Contact' = 'Appointment', pkgName: string | null = null) => {
+    setAppointmentType(type);
+    setSelectedPackage(pkgName);
+    setIsAppointmentModalOpen(true);
+  };
+  const closeAppointmentModal = () => {
+    setIsAppointmentModalOpen(false);
+    setSelectedPackage(null);
+  };
   
   const openPatientLoginModal = () => setIsPatientLoginModalOpen(true);
   const closePatientLoginModal = () => setIsPatientLoginModalOpen(false);
@@ -79,7 +116,7 @@ const App: React.FC = () => {
   };
 
   const handlePatientPortalClick = () => {
-    openPatientLoginModal();
+    window.location.hash = '#patientportal';
   };
 
   useKonamiCode(() => {
@@ -121,23 +158,15 @@ const App: React.FC = () => {
     };
   }, []);
 
+
   useEffect(() => {
     // Scroll Spy Observer
     const sections = document.querySelectorAll('section[id]');
     
     observer.current?.disconnect();
     
-    const linkNameMap: { [key: string]: string } = {
-        'home': '', 
-        'aboutus': 'About',
-        'healthpackages': 'Packages',
-        'contactus': 'Contact',
-        'doctor': 'Find Doctor',
-        'emergency': 'Emergency',
-        'patientportal': 'Patient Portal',
-    };
-
     observer.current = new IntersectionObserver(
+
       (entries) => {
         // Only apply scroll-spy behavior on the homepage
         if (getPageInfoFromHash().page !== 'home') return;
@@ -186,24 +215,13 @@ const App: React.FC = () => {
     });
     
     // Manually set active section for full pages
-    const pageToSectionMap: { [key: string]: string } = {
-        'blog': 'Blogs',
-        'post': 'Blogs',
-        'specialties': 'Specialties',
-        'specialty': 'Specialties',
-        'aboutus': 'About',
-        'healthpackages': 'Packages',
-        'contactus': 'Contact',
-        'doctor': 'Find Doctor',
-        'emergency': 'Emergency',
-        'patientportal': 'Patient Portal',
-    };
     const newActiveSection = pageToSectionMap[pageInfo.page];
     if (newActiveSection) {
         setActiveSection(newActiveSection);
     } else if (pageInfo.page !== 'home') {
         setActiveSection('');
     }
+
 
 
     return () => {
@@ -231,7 +249,7 @@ const App: React.FC = () => {
       case 'doctor-bio':
         return pageInfo.param ? <DoctorBioPage doctorId={pageInfo.param} onBookAppointmentClick={openAppointmentModal} /> : <Doctors />;
       case 'healthpackages':
-        return <HealthPackages />;
+        return <HealthPackages onBookPackageClick={openAppointmentModal} />;
       case 'contactus':
       case 'faq':
         return <Contact />;
@@ -248,7 +266,9 @@ const App: React.FC = () => {
       case 'marketing':
         return <MarketingPage />;
       case 'international':
-        return <InternationalPatientPage />;
+        return <InternationalPatientPage onBookAppointmentClick={openAppointmentModal} />;
+      case 'patientservices':
+        return <PatientServicesPage initialSection={pageInfo.param || undefined} />;
       case 'gallery':
         return <GalleryPage />;
       default:
@@ -269,11 +289,24 @@ const App: React.FC = () => {
           />
       )}
       <main className={!isDashboardPage ? "animate-page-transition md:pt-[200px] pt-0 pb-24 md:pb-0" : ""}>
-        {renderPage()}
+        <Suspense fallback={
+          <div className="flex items-center justify-center min-h-[400px]">
+             <div className="w-12 h-12 border-4 border-[#00B5A5]/20 border-t-[#00B5A5] rounded-full animate-spin"></div>
+          </div>
+        }>
+          {renderPage()}
+        </Suspense>
       </main>
+
       {!isDashboardPage && <Footer />}
       <MasterSetupPanel />
-      {isAppointmentModalOpen && <AppointmentModal onClose={closeAppointmentModal} />}
+      {isAppointmentModalOpen && (
+        <AppointmentModal 
+          onClose={closeAppointmentModal} 
+          type={appointmentType}
+          packageName={selectedPackage || undefined}
+        />
+      )}
       {isPatientLoginModalOpen && <PatientLoginModal onClose={closePatientLoginModal} onLogin={handlePatientLogin} />}
       {!isDashboardPage && <BackToTopButton />}
       {!isDashboardPage && <TimedPopup />}

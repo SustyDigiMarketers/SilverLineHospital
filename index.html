@@ -11,12 +11,25 @@
     <link rel="canonical" href="https://silverlinehospitals.com/" />
     <link rel="icon" href="/favicon.svg" />
 
+    <!-- Preload Critical Assets -->
+    <link rel="preload" as="image" href="/Hero/Home1.jpg" fetchpriority="high" />
+    <link rel="preload" as="image" href="/logo.svg" />
+
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="dns-prefetch" href="https://cdn.tailwindcss.com" />
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net" />
     <link
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&family=Poppins:wght@500;700&display=swap"
       rel="stylesheet"
+      media="print"
+      onload="this.media='all'"
     />
+    <noscript>
+      <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&family=Poppins:wght@500;700&display=swap" rel="stylesheet" />
+    </noscript>
+
 
     <!-- Critical CSS: Ensures site looks good immediately, even before Tailwind loads -->
     <style>
@@ -217,21 +230,67 @@
         }
       }
 
-      /* Animation Placeholders */
-      .animate-on-scroll {
-        opacity: 1;
-        transition: opacity 0.5s;
-      }
-      .animate-fade-in {
-        animation: fadeIn 0.5s forwards;
-      }
-      @keyframes fadeIn {
-        from {
-          opacity: 0;
+      /* Mobile Performance Optimizations */
+      @media (max-width: 767px) {
+        /* Content Visibility: Skips rendering off-screen content. Boosts mobile scrolling. */
+        section {
+          content-visibility: auto;
+          contain-intrinsic-size: 1px 500px;
         }
-        to {
-          opacity: 1;
+        
+        /* First few sections should always be visible to avoid flash */
+        #home, #why-choose-us, #island-bar {
+          content-visibility: visible;
         }
+
+        /* Promote frequently moved elements to their own layer */
+        nav, header, .fixed, .mobile-nav-pill {
+          will-change: transform;
+        }
+
+        /* Remove tap highlight delay/effect for snappier mobile feel */
+        * {
+          -webkit-tap-highlight-color: transparent;
+          -webkit-font-smoothing: antialiased;
+          -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Disable fixed backgrounds on mobile for performance (prevents heavy repaints) */
+        .bg-fixed {
+          background-attachment: scroll !important;
+        }
+
+        /* Smoother scrolling on IOS */
+        body {
+          -webkit-overflow-scrolling: touch;
+          scroll-behavior: smooth;
+          text-rendering: optimizeSpeed;
+        }
+
+        /* Reduce heavy effects on mobile */
+        .backdrop-blur-xl, .backdrop-blur-2xl {
+          backdrop-filter: blur(6px) !important;
+          -webkit-backdrop-filter: blur(6px) !important;
+        }
+        
+        /* Optimized transition durations for mobile */
+        .transition-all, .transition-transform {
+          transition-duration: 150ms !important;
+        }
+
+        /* Lighter shadows for mobile GPUs */
+        .shadow-2xl {
+           box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1) !important;
+        }
+      }
+
+      /* Marquee Animation for Insurance Partners */
+      @keyframes marquee {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-50%); }
+      }
+      .animate-marquee {
+        animation: marquee 30s linear infinite;
       }
 
       /* Scrollbar - Global Hide */
@@ -291,7 +350,8 @@
         },
       };
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
+
 
     <!-- 
     <script type="importmap">

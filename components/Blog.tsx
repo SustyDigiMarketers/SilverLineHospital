@@ -171,7 +171,7 @@ const Blog: React.FC = () => {
                             <div className="flex flex-col xl:flex-row gap-6 mb-12">
                                 {/* Large Featured Post */}
                                 <div className="xl:w-2/3">
-                                    <div className="relative h-[450px] rounded-[2.5rem] overflow-hidden group shadow-[0_20px_50px_rgba(0,0,0,0.1)] border border-white/50">
+                                    <div className="relative h-[500px] rounded-[2.5rem] overflow-hidden group shadow-[0_20px_50px_rgba(0,0,0,0.1)] border border-white/50">
                                         <img 
                                             src={getImageSrc(topPosts[0])} 
                                             alt={topPosts[0].title} 
@@ -203,7 +203,7 @@ const Blog: React.FC = () => {
                                 </div>
 
                                 {/* Vertical Auto-Scroll List (Right of Hero) */}
-                                <div className="xl:w-1/3 flex flex-col gap-4 max-h-[450px] overflow-hidden relative">
+                                <div className="xl:w-1/3 flex flex-col gap-4 max-h-[500px] overflow-hidden relative">
                                     <div className="absolute top-0 left-0 w-full h-12 bg-gradient-to-b from-slate-50 to-transparent z-10" />
                                     <div className="absolute bottom-0 left-0 w-full h-12 bg-gradient-to-t from-slate-50 to-transparent z-10" />
                                     

@@ -10,48 +10,16 @@ const Hero: React.FC = () => {
   const [slides, setSlides] = useState<any[]>(config.hero?.slides || []);
   const [currentIndex, setCurrentIndex] = useState(0);
   const timeoutRef = useRef<number | null>(null);
-  const [scrollY, setScrollY] = useState(0);
 
-  // Discovery Logic for Home{n}.jpg images
+
+  // Discovery Logic for Home{n}.jpg images removed for performance. 
+  // Use config.hero.slides for dynamic discovery instead.
   useEffect(() => {
-    const discoverHomeImages = async () => {
-      const dynamicSlides = [];
-      const MAX_DISCOVERY = 15; // Limit to check up to 15 images
-      
-      const checkPath = (path: string): Promise<boolean> => {
-        return new Promise((resolve) => {
-          const img = new Image();
-          img.onload = () => resolve(true);
-          img.onerror = () => resolve(false);
-          img.src = path;
-        });
-      };
+    if (config.hero?.slides) {
+      setSlides(config.hero.slides);
+    }
+  }, [config.hero?.slides]);
 
-      for (let i = 1; i <= MAX_DISCOVERY; i++) {
-        const path = `/Hero/Home${i}.jpg`;
-        const exists = await checkPath(path);
-        
-        if (exists) {
-          dynamicSlides.push({
-            image: path,
-            headline: '',
-            paragraph: '',
-            ctaText: '',
-          });
-        } else if (i > 3) { 
-          // Stop if i > 3 to minimize failed requests if gaps appear, 
-          // but allow checking first few in case of naming inconsistency
-          break;
-        }
-      }
-
-      if (dynamicSlides.length > 0) {
-        setSlides(dynamicSlides);
-      }
-    };
-
-    discoverHomeImages();
-  }, []);
 
   const resetTimeout = useCallback(() => {
     if (timeoutRef.current) {
@@ -66,13 +34,12 @@ const Hero: React.FC = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY < window.innerHeight) {
-        setScrollY(window.scrollY);
-      }
+      // Logic removed as scrollY is no longer used
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
   
   useEffect(() => {
     resetTimeout();
@@ -98,7 +65,7 @@ const Hero: React.FC = () => {
   };
 
   if (slides.length === 0) {
-      return <div className="h-[250px] md:h-[500px] bg-slate-100 flex items-center justify-center">
+      return <div className="h-[250px] md:h-[550px] bg-slate-100 flex items-center justify-center">
           <div className="animate-pulse text-[#27afaf] font-black tracking-tighter uppercase text-xs">Loading Visuals...</div>
       </div>;
   }
@@ -107,7 +74,7 @@ const Hero: React.FC = () => {
     <section 
       id="home" 
       style={{ position: 'relative', overflow: 'hidden' }} 
-      className="relative w-full overflow-hidden h-[200px] md:h-[450px]"
+      className="relative w-full overflow-hidden h-[200px] md:h-[500px]"
       aria-roledescription="carousel"
       aria-label="Hero Carousel"
     >
@@ -115,7 +82,7 @@ const Hero: React.FC = () => {
         {slides.map((slide: any, index: number) => (
           <div 
             key={index}
-            className={`absolute inset-0 w-full h-full transition-opacity duration-1000 ease-in-out ${index === currentIndex ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}
+            className={`absolute inset-0 w-full h-full transition-opacity duration-[500ms] md:duration-[1000ms] ease-in-out ${index === currentIndex ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}
             style={{ width: '100%', height: '100%', position: 'absolute', top: 0, left: 0 }}
             role="group"
             aria-roledescription="slide"
@@ -127,12 +94,13 @@ const Hero: React.FC = () => {
                     configKey={`hero.slides[${index}].image`}
                     defaultValue={slide.image}
                     alt="SilverLine Hospital Hero"
-                    className="w-full h-full object-fill"
+                    className="w-full h-full object-cover"
                     priority={index === 0}
                     style={{ 
                         width: '100%',
                         height: '100%',
                     }}
+                    loading="lazy"
                 />
             </div>
           </div>

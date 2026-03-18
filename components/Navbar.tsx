@@ -74,8 +74,16 @@ const Navbar: React.FC<NavbarProps> = ({ activeSection, onBookAppointmentClick, 
   };
   
   useEffect(() => {
+    let ticking = false;
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const scrolled = window.scrollY > 50;
+          setIsScrolled((prev) => (prev !== scrolled ? scrolled : prev));
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
     handleScroll();
     window.addEventListener('scroll', handleScroll, { passive: true });
@@ -83,6 +91,7 @@ const Navbar: React.FC<NavbarProps> = ({ activeSection, onBookAppointmentClick, 
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
+
   
 
   const updateBlobStyle = useCallback(() => {
@@ -112,12 +121,23 @@ const Navbar: React.FC<NavbarProps> = ({ activeSection, onBookAppointmentClick, 
 
 
   useEffect(() => {
-    window.addEventListener('resize', updateBlobStyle);
+    let ticking = false;
+    const handleResize = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          updateBlobStyle();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+    window.addEventListener('resize', handleResize);
     document.fonts.ready.then(updateBlobStyle);
     return () => {
-      window.removeEventListener('resize', updateBlobStyle);
+      window.removeEventListener('resize', handleResize);
     };
   }, [updateBlobStyle]);
+
 
   const handleNavKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
     if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;

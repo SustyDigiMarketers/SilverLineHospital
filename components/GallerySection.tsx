@@ -52,7 +52,9 @@ const GallerySection: React.FC = () => {
                                     src={resolveImageSrc(config, item)} 
                                     alt={`Gallery image ${index + 1}`} 
                                     className="w-full h-56 object-cover rounded-lg shadow-md transition-all duration-300 group-hover:shadow-xl" 
+                                    loading="lazy"
                                 />
+
                             </div>
                         ))}
                     </div>

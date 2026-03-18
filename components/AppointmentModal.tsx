@@ -4,16 +4,15 @@ import type { Doctor } from '../lib/doctorsData';
 
 interface AppointmentModalProps {
   onClose: () => void;
+  type?: 'Appointment' | 'Package' | 'Foregin PT' | 'Contact';
+  packageName?: string;
 }
 
 const countryCodes = [
+    { code: '+91', country: 'India' },
     { code: '+1', country: 'USA' },
     { code: '+44', country: 'UK' },
-    { code: '+91', country: 'India' },
     { code: '+61', country: 'Australia' },
-    { code: '+81', country: 'Japan' },
-    { code: '+49', country: 'Germany' },
-    { code: '+33', country: 'France' },
 ];
 
 const timeSlots = [
@@ -21,7 +20,10 @@ const timeSlots = [
     '01:00 PM', '01:30 PM', '02:00 PM', '02:30 PM', '03:00 PM', '03:30 PM', '04:00 PM'
 ];
 
-const AppointmentModal: React.FC<AppointmentModalProps> = ({ onClose }) => {
+// Paste your Web App URL here after deploying the App Script
+const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyyT5l12J839WsU1mBtwSgVnG5820_SFgYCsgHZA3IybcORShd1h_XFIy6Nzru2epra/exec';
+
+const AppointmentModal: React.FC<AppointmentModalProps> = ({ onClose, type = 'Appointment', packageName }) => {
   const { config } = useContext(MasterSetupContext);
   const doctors: Doctor[] = config.doctors?.list || [];
   const modalRef = useRef<HTMLDivElement>(null);
@@ -86,27 +88,40 @@ const AppointmentModal: React.FC<AppointmentModalProps> = ({ onClose }) => {
       document.removeEventListener('keydown', handleKeyDown);
       document.body.style.overflow = '';
     };
-  }, [onClose, isSuccess]); // Re-bind focus trap when state changes
+  }, [onClose, isSuccess]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    setIsSubmitting(true);
     
     const form = e.target as HTMLFormElement;
-    const actionUrl = form.action;
     const formData = new FormData(form);
     
-    setIsSubmitting(false);
-    setIsSuccess(true);
+    const params = new URLSearchParams();
     
-    if (actionUrl && actionUrl !== window.location.href && !actionUrl.includes('YOUR_GOOGLE_SHEET_SCRIPT_URL_HERE')) {
-      fetch(actionUrl, {
+    // Parameters matching your specific request structure (Capitalized):
+    params.append('sheet', type); 
+    params.append('FullName', formData.get('name') as string);
+    params.append('PatientID', (formData.get('patient-id') as string) || 'N/A');
+    params.append('PatientType', formData.get('patient_type') === 'new' ? 'New Patient' : 'Returning Patient');
+    params.append('Date', formData.get('date') as string);
+    params.append('Time', (formData.get('time') as string) || (type === 'Package' ? 'Flexible' : 'N/A'));
+    params.append('Doctor', (formData.get('doctor_choice') as string) || (type === 'Package' ? packageName || 'N/A' : 'N/A'));
+    params.append('Contact', `${formData.get('country-code')} ${formData.get('phone')}`);
+    params.append('Reason', (formData.get('company') as string) || 'N/A');
+    
+    fetch(GOOGLE_SCRIPT_URL, {
         method: 'POST',
-        body: formData,
+        body: params,
         mode: 'no-cors'
-      }).catch(error => {
+    }).then(() => {
+        setIsSubmitting(false);
+        setIsSuccess(true);
+    }).catch(error => {
         console.error('Submission error:', error);
-      });
-    }
+        setIsSubmitting(false);
+        setIsSuccess(true);
+    });
   };
   
   const inputStyles = "block w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-[#00B5A5] focus:border-[#00B5A5] transition duration-200 ease-in-out disabled:bg-gray-100 disabled:text-gray-400";
@@ -125,9 +140,16 @@ const AppointmentModal: React.FC<AppointmentModalProps> = ({ onClose }) => {
         onClick={(e) => e.stopPropagation()}
       >
         <div className="flex justify-between items-start p-6 border-b border-gray-200">
-          <h2 id="appointment-heading" className="text-2xl font-bold text-[#0E2A47]">
-            {isSuccess ? 'Request Submitted' : 'Book an Appointment'}
-          </h2>
+          <div className="flex flex-col">
+            <h2 id="appointment-heading" className="text-2xl font-bold text-[#0E2A47]">
+                {isSuccess ? 'Request Submitted' : 
+                 type === 'Package' ? 'Book Health Package' : 
+                 type === 'Foregin PT' ? 'Foreign Patient Registration' : 
+                 type === 'Contact' ? 'Contact Us' :
+                 'Book an Appointment'}
+            </h2>
+            {packageName && !isSuccess && <p className="text-teal-600 font-bold text-sm mt-1">{packageName}</p>}
+          </div>
           <button
             ref={closeButtonRef}
             onClick={onClose}
@@ -145,7 +167,7 @@ const AppointmentModal: React.FC<AppointmentModalProps> = ({ onClose }) => {
                 </div>
                 <h3 className="text-2xl font-bold text-[#0E2A47]">Thank You!</h3>
                 <p className="text-gray-600 max-w-sm">
-                    Your appointment request for <strong>{selectedDate}</strong> at <strong>{selectedTime}</strong> has been received. Our team will contact you shortly to confirm.
+                    Your {type.toLowerCase()} request has been received. Our team will contact you shortly to confirm.
                 </p>
                 <button 
                     onClick={onClose}
@@ -156,7 +178,11 @@ const AppointmentModal: React.FC<AppointmentModalProps> = ({ onClose }) => {
             </div>
         ) : (
             <>
-                <form ref={formRef} action="YOUR_GOOGLE_SHEET_SCRIPT_URL_HERE" onSubmit={handleSubmit} className="p-6 md:p-8 overflow-y-auto space-y-6">
+                <form ref={formRef} onSubmit={handleSubmit} className="p-6 md:p-8 overflow-y-auto space-y-6">
+                {/* Hidden Fields for Sheet Routing */}
+                <input type="hidden" name="sheet" value={type} />
+                <input type="hidden" name="subject" value={type === 'Package' ? `Package: ${packageName}` : 'General Appointment'} />
+
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                     <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">Full Name</label>
@@ -167,73 +193,75 @@ const AppointmentModal: React.FC<AppointmentModalProps> = ({ onClose }) => {
                     <input type="text" id="patient-id" name="patient-id" placeholder="e.g., P12345" className={inputStyles} disabled={isSubmitting} />
                     </div>
                 </div>
-                
+
                 <fieldset disabled={isSubmitting}>
                     <legend className="block text-sm font-medium text-gray-700 mb-2">Patient Type</legend>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
-                        <input type="radio" id="new-patient" name="patient-type" value="new" className="peer sr-only" required aria-required="true" />
+                        <input type="radio" id="new-patient" name="patient_type" value="new" className="peer sr-only" defaultChecked />
                         <label htmlFor="new-patient" className="flex flex-col items-center justify-center text-center p-4 rounded-lg border-2 border-gray-200 cursor-pointer transition-all duration-300 peer-checked:border-[#00B5A5] peer-checked:bg-teal-50 peer-checked:scale-105 hover:border-gray-400 peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
-                            <svg className="w-8 h-8 mb-2 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z" /></svg>
                             <span className="font-semibold text-gray-800">New Patient</span>
                         </label>
                         </div>
                         <div>
-                        <input type="radio" id="old-patient" name="patient-type" value="old" className="peer sr-only" />
+                        <input type="radio" id="old-patient" name="patient_type" value="old" className="peer sr-only" />
                         <label htmlFor="old-patient" className="flex flex-col items-center justify-center text-center p-4 rounded-lg border-2 border-gray-200 cursor-pointer transition-all duration-300 peer-checked:border-[#00B5A5] peer-checked:bg-teal-50 peer-checked:scale-105 hover:border-gray-400 peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
-                            <svg className="w-8 h-8 mb-2 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
                             <span className="font-semibold text-gray-800">Returning Patient</span>
                         </label>
                         </div>
                     </div>
                 </fieldset>
-                
+
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
-                    <label htmlFor="date" className="block text-sm font-medium text-gray-700 mb-2">Preferred Date</label>
-                    <input type="date" id="date" name="date" required aria-required="true" className={inputStyles} min={new Date().toISOString().split('T')[0]} value={selectedDate} onChange={e => setSelectedDate(e.target.value)} disabled={isSubmitting} />
+                        <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">Contact Number</label>
+                        <div className="flex">
+                        <select name="country-code" aria-label="Country code" className={`${inputStyles} rounded-r-none border-r-0 max-w-[80px] px-2`} disabled={isSubmitting}>
+                            {countryCodes.map(c => <option key={c.country} value={c.code}>{c.code}</option>)}
+                        </select>
+                        <input type="tel" id="placeholder-phone" name="phone" placeholder="98765 43210" required aria-required="true" className={`${inputStyles} rounded-l-none`} disabled={isSubmitting} />
+                        </div>
                     </div>
                     <div>
-                    <label htmlFor="time" className="block text-sm font-medium text-gray-700 mb-2">Preferred Time</label>
-                    <select id="time" name="time" required aria-required="true" className={inputStyles} value={selectedTime} onChange={e => setSelectedTime(e.target.value)} disabled={isSubmitting}>
-                        <option value="">Select a time</option>
-                        {timeSlots.map(t => <option key={t} value={t}>{t}</option>)}
-                    </select>
-                    </div>
-                </div>
-                
-                <div>
-                    <label htmlFor="doctor" className="block text-sm font-medium text-gray-700 mb-2">Preferred Doctor <span className="text-gray-400">(Optional)</span></label>
-                    <select
-                        id="doctor"
-                        name="doctor"
-                        className={`${inputStyles} disabled:bg-gray-200 disabled:cursor-not-allowed`}
-                        disabled={!selectedDate || !selectedTime || isSubmitting}
-                    >
-                        <option value="">Any available doctor</option>
-                        {availableDoctors.length > 0 ? (
-                            availableDoctors.map(doctor => <option key={doctor.id} value={doctor.id}>{doctor.name} - {doctor.specialty}</option>)
-                        ) : (
-                            <option value="" disabled>
-                                {selectedDate && selectedTime ? 'No doctors available at this time' : 'Please select date and time first'}
-                            </option>
-                        )}
-                    </select>
-                </div>
-                
-                <div>
-                    <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">Contact Number</label>
-                    <div className="flex">
-                    <select name="country-code" aria-label="Country code" className={`${inputStyles} rounded-r-none border-r-0 max-w-[80px]`} disabled={isSubmitting}>
-                        {countryCodes.map(c => <option key={c.country} value={c.code}>{c.code}</option>)}
-                    </select>
-                    <input type="tel" id="phone" name="phone" placeholder="555-123-4567" required aria-required="true" className={`${inputStyles} rounded-l-none`} disabled={isSubmitting} />
+                        <label htmlFor="date" className="block text-sm font-medium text-gray-700 mb-2">Preferred Date</label>
+                        <input type="date" id="date" name="date" required aria-required="true" className={inputStyles} min={new Date().toISOString().split('T')[0]} value={selectedDate} onChange={e => setSelectedDate(e.target.value)} disabled={isSubmitting} />
                     </div>
                 </div>
 
+                {type === 'Appointment' && (
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                        <label htmlFor="time" className="block text-sm font-medium text-gray-700 mb-2">Preferred Time</label>
+                        <select id="time" name="time" required aria-required="true" className={inputStyles} value={selectedTime} onChange={e => setSelectedTime(e.target.value)} disabled={isSubmitting}>
+                            <option value="">Select a time</option>
+                            {timeSlots.map(t => <option key={t} value={t}>{t}</option>)}
+                        </select>
+                        </div>
+                        <div>
+                        <label htmlFor="doctor" className="block text-sm font-medium text-gray-700 mb-2">Preferred Doctor <span className="text-gray-400">(Optional)</span></label>
+                        <select
+                            id="doctor"
+                            name="doctor_choice"
+                            className={`${inputStyles} disabled:bg-gray-100`}
+                            disabled={!selectedDate || !selectedTime || isSubmitting}
+                        >
+                            <option value="Any available doctor">Any available doctor</option>
+                            {availableDoctors.map(doctor => <option key={doctor.id} value={`${doctor.name} (${doctor.specialty})`}>{doctor.name} - {doctor.specialty}</option>)}
+                        </select>
+                        </div>
+                    </div>
+                )}
+
+                {type === 'Package' && (
+                    <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-2">Selected Package</label>
+                        <input type="text" readOnly value={packageName} className={`${inputStyles} bg-teal-50 border-teal-200 font-bold text-[#0E2A47]`} />
+                    </div>
+                )}
+
                 <div>
-                    <label htmlFor="reason" className="block text-sm font-medium text-gray-700 mb-2">Reason for Visit <span className="text-gray-400">(Optional)</span></label>
-                    <textarea id="reason" name="reason" rows={2} placeholder="e.g. Annual checkup, consultation..." className={inputStyles} disabled={isSubmitting}></textarea>
+                    <label htmlFor="company" className="block text-sm font-medium text-gray-700 mb-2">Additional Note <span className="text-gray-400">(Optional)</span></label>
+                    <textarea id="company" name="company" rows={2} placeholder="Any specific requirements or medical history..." className={inputStyles} disabled={isSubmitting}></textarea>
                 </div>
                 </form>
 
@@ -242,17 +270,14 @@ const AppointmentModal: React.FC<AppointmentModalProps> = ({ onClose }) => {
                     type="submit" 
                     onClick={() => formRef.current?.requestSubmit()} 
                     disabled={isSubmitting}
-                    className={`w-full px-6 py-3 font-medium text-white bg-[#0E2A47] rounded-full transition-all duration-300 ease-in-out hover:bg-[#00B5A5] hover:shadow-xl hover:shadow-teal-400/50 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-[#00B5A5] ${isSubmitting ? 'opacity-80 cursor-wait' : ''}`}
+                    className={`w-full px-6 py-4 font-bold text-white bg-[#0E2A47] rounded-xl transition-all duration-300 ease-in-out hover:bg-[#00B5A5] shadow-lg hover:shadow-teal-500/20 transform hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#00B5A5] ${isSubmitting ? 'opacity-80 cursor-wait' : ''}`}
                 >
                     {isSubmitting ? (
-                        <span className="flex items-center justify-center">
-                            <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                            </svg>
-                            Processing Request...
+                        <span className="flex items-center justify-center gap-3">
+                            <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle><path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>
+                            Sending Request...
                         </span>
-                    ) : 'Submit Request'}
+                    ) : `Confirm ${type} Booking`}
                 </button>
                 </div>
             </>

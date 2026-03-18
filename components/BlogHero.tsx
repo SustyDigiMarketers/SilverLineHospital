@@ -46,7 +46,7 @@ const BlogHero: React.FC<BlogHeroProps> = ({ posts }) => {
     const activePost = posts[currentIndex];
 
     return (
-        <section className="relative h-[350px] md:h-[500px] w-full overflow-hidden" aria-roledescription="carousel">
+        <section className="relative h-[350px] md:h-[550px] w-full overflow-hidden" aria-roledescription="carousel">
             {posts.map((post, index) => {
                  // Resolve image: Check if string URL (uploaded) or index (local asset)
                  const imageSrc = typeof post.image === 'string' && (post.image.startsWith('http') || post.image.startsWith('data:'))
