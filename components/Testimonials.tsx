@@ -8,7 +8,7 @@ const Testimonials: React.FC = () => {
 
     return (
         <section id="testimonials" className="py-24 bg-white">
-            <div className="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+            <div className="container mx-auto max-w-6xl 2xl:max-w-7xl 3xl:max-w-[1440px] px-4 sm:px-6 lg:px-8">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                     {/* Left Column: Title and Content */}
                     <div className="animate-on-scroll fade-in-left">

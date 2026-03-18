@@ -49,7 +49,7 @@ const Features: React.FC = () => {
                 <div className="absolute inset-0 opacity-[0.05]" style={{ backgroundImage: 'radial-gradient(#000000 1px, transparent 1px)', backgroundSize: '40px 40px' }}></div>
             </div>
 
-            <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
+            <div className="container mx-auto max-w-7xl 2xl:max-w-[1440px] 3xl:max-w-[1600px] px-4 sm:px-6 lg:px-8 relative z-10">
                 <motion.div 
                     variants={containerVariants}
                     initial="hidden"

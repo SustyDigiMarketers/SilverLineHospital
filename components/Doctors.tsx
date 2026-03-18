@@ -83,7 +83,7 @@ const Doctors: React.FC = () => {
            <div className="absolute -top-[20%] -right-[10%] w-[70%] h-[70%] rounded-full bg-gradient-to-b from-[#00B5A5]/10 to-transparent blur-3xl" />
            <div className="absolute top-[40%] -left-[10%] w-[60%] h-[60%] rounded-full bg-gradient-to-t from-[#0E2A47]/5 to-transparent blur-3xl" />
         </div>
-        <div className="container mx-auto max-w-7xl px-4 sm:px-6 relative z-10">
+        <div className="container mx-auto max-w-7xl 2xl:max-w-[1440px] 3xl:max-w-[1600px] px-4 sm:px-6 relative z-10">
           <div className="text-center mb-12 animate-on-scroll fade-in-up">
             <EditableText
               as="h2"

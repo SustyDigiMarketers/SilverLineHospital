@@ -67,7 +67,7 @@ const InternationalPatientPage: React.FC<InternationalPatientPageProps> = ({ onB
            <div className="absolute bottom-[0%] -right-[10%] w-[60%] h-[60%] rounded-full bg-gradient-to-tl from-[#0E2A47]/5 to-transparent blur-3xl" />
         </div>
         
-        <div className="container mx-auto max-w-5xl px-4 sm:px-6 relative z-10 text-gray-700 leading-relaxed">
+        <div className="container mx-auto max-w-5xl 2xl:max-w-6xl 3xl:max-w-7xl px-4 sm:px-6 relative z-10 text-gray-700 leading-relaxed">
           <p className="text-lg text-center mb-16 animate-on-scroll fade-in-up">
             At SilverLine Hospital, our International Patient Services are designed to provide world-class healthcare tailored to your unique needs — no matter where you are in the world. We strive to make every aspect of your journey seamless, from the moment you reach out to us until your full recovery.
           </p>
@@ -92,7 +92,7 @@ const InternationalPatientPage: React.FC<InternationalPatientPageProps> = ({ onB
 
       {/* Global Outreach */}
       <section className="py-20 relative overflow-hidden">
-        <div className="container mx-auto max-w-5xl px-4 sm:px-6 relative z-10 text-gray-700 leading-relaxed">
+        <div className="container mx-auto max-w-5xl 2xl:max-w-6xl 3xl:max-w-7xl px-4 sm:px-6 relative z-10 text-gray-700 leading-relaxed">
           <h2 className="text-3xl font-bold text-[#0E2A47] mb-6 animate-on-scroll fade-in-up">Global Outreach Through Our Information Centres</h2>
           
           <p className="mb-10 animate-on-scroll fade-in-up delay-100">

@@ -173,7 +173,7 @@ const Navbar: React.FC<NavbarProps> = ({ activeSection, onBookAppointmentClick, 
         <div 
           className={`container mx-auto transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${
             isScrolled 
-              ? 'md:max-w-6xl md:px-4 max-w-full px-0' 
+              ? 'md:max-w-6xl xl:max-w-7xl 2xl:max-w-[1440px] 3xl:max-w-[1600px] md:px-4 max-w-full px-0' 
               : 'max-w-full px-0'
           }`}
         >
