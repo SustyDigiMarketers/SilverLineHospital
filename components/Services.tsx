@@ -13,7 +13,7 @@ const SpecialtiesSection: React.FC = () => {
 
   return (
     <section id="home-specialties" className="py-24 bg-[#F8FAFC]">
-      <div className="container mx-auto max-w-7xl 2xl:max-w-[1440px] 3xl:max-w-[1600px] px-4 sm:px-6 lg:px-8">
+      <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col lg:flex-row gap-16 items-start">
           <div className="w-full lg:w-[60%]">
             <div className="mb-12">

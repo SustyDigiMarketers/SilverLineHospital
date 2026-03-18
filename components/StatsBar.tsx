@@ -57,7 +57,7 @@ const StatsBar: React.FC = () => {
       style={{ backgroundImage: `url('${bgImage}')` }}
     >
         <div className="absolute inset-0 bg-black/40"></div>
-        <div className="relative container mx-auto max-w-6xl 2xl:max-w-7xl 3xl:max-w-[1440px] px-4 sm:px-6 py-12">
+        <div className="relative container mx-auto max-w-6xl px-4 sm:px-6 py-12">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-white">
                 {statsData.map((stat) => (
                     <StatCounter key={stat.configKey} stat={stat} />

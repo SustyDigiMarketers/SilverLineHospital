@@ -124,7 +124,7 @@ const SpecialtyDetail: React.FC<SpecialtyDetailProps> = ({ specialtyId, onBookAp
           className="absolute inset-0 w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-black/60"></div>
-        <div className="relative text-center animate-on-scroll fade-in-up p-4 container mx-auto max-w-4xl 2xl:max-w-5xl 3xl:max-w-6xl px-4">
+        <div className="relative text-center animate-on-scroll fade-in-up p-4 container mx-auto max-w-4xl px-4">
           <div className="flex justify-center mb-6">
              <div className="bg-white/20 backdrop-blur-md p-6 rounded-full border border-white/30">
                <EditableImage 

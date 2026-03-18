@@ -59,7 +59,7 @@ const IslandBar: React.FC = () => {
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
-          className="max-w-5xl xl:max-w-6xl 2xl:max-w-7xl 3xl:max-w-[1440px] mx-auto md:bg-white/90 md:backdrop-blur-xl md:rounded-full md:shadow-[0_20px_50px_rgba(0,0,0,0.1)] flex flex-row overflow-hidden transition-all duration-500 hover:shadow-[0_25px_60px_rgba(0,0,0,0.15)] md:border md:border-white/50
+          className="max-w-5xl mx-auto md:bg-white/90 md:backdrop-blur-xl md:rounded-full md:shadow-[0_20px_50px_rgba(0,0,0,0.1)] flex flex-row overflow-hidden transition-all duration-500 hover:shadow-[0_25px_60px_rgba(0,0,0,0.15)] md:border md:border-white/50
                      bg-white/80 backdrop-blur-2xl rounded-2xl shadow-[0_8px_32px_rgba(0,181,165,0.15)] border border-[#00B5A5]/20 relative"
         >
           {/* Subtle animated gradient background for mobile futuristic feel */}

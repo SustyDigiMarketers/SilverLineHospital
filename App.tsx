@@ -291,7 +291,7 @@ const App: React.FC = () => {
       <main className={!isDashboardPage ? "animate-page-transition md:pt-[200px] pt-0 pb-24 md:pb-0" : ""}>
         <Suspense fallback={
           <div className="flex items-center justify-center min-h-[400px]">
-             <div className="w-12 h-12 border-4 border-[#00B5A5]/20 border-t-[#00B5A5] rounded-full animate-spin"></div>
+            <div className="w-12 h-12 border-4 border-[#00B5A5]/20 border-t-[#00B5A5] rounded-full animate-spin"></div>
           </div>
         }>
           {renderPage()}

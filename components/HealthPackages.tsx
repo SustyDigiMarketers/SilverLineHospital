@@ -120,7 +120,7 @@ const HealthPackages: React.FC<HealthPackagesProps> = ({ onBookPackageClick }) =
            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle_at_center,rgba(0,181,165,0.03)_0%,transparent_70%)]" />
         </div>
 
-        <div className="container mx-auto max-w-7xl 2xl:max-w-[1440px] 3xl:max-w-[1600px] px-4 sm:px-6 relative z-10">
+        <div className="container mx-auto max-w-7xl px-4 sm:px-6 relative z-10">
           <div className="text-center mb-20">
             <motion.div
               initial={{ opacity: 0, y: -20 }}
@@ -155,7 +155,7 @@ const HealthPackages: React.FC<HealthPackagesProps> = ({ onBookPackageClick }) =
               <motion.div
                 key={index}
                 variants={cardVariants}
-                className={`w-full md:w-[calc(50%-1.25rem)] lg:w-[calc(33.333%-1.666rem)] 2xl:w-[calc(33.333%-1.666rem)] group relative flex flex-col bg-white rounded-[2.5rem] p-10 transition-all duration-500 hover:shadow-[0_40px_80px_-20px_rgba(14,42,71,0.15)] border-2 ${
+                className={`w-full md:w-[calc(50%-1.25rem)] lg:w-[calc(33.333%-1.666rem)] group relative flex flex-col bg-white rounded-[2.5rem] p-10 transition-all duration-500 hover:shadow-[0_40px_80px_-20px_rgba(14,42,71,0.15)] border-2 ${
                   pkg.isPopular 
                     ? 'border-teal-500 ring-4 ring-teal-500/5 z-10' 
                     : 'border-gray-50 hover:border-teal-200'
@@ -218,7 +218,7 @@ const HealthPackages: React.FC<HealthPackagesProps> = ({ onBookPackageClick }) =
 
       {/* How it Works / Process Section */}
       <section className="py-20 bg-white relative overflow-hidden">
-        <div className="container mx-auto max-w-6xl 2xl:max-w-7xl 3xl:max-w-[1440px] px-4 sm:px-6 relative z-10">
+        <div className="container mx-auto max-w-6xl px-4 sm:px-6 relative z-10">
             <div className="text-center mb-16 animate-on-scroll fade-in-up">
               <h2 className="text-4xl font-bold text-[#0E2A47]">How It Works</h2>
               <p className="mt-4 text-lg text-gray-600">Your journey to better health in three simple steps.</p>
@@ -252,7 +252,7 @@ const HealthPackages: React.FC<HealthPackagesProps> = ({ onBookPackageClick }) =
            <div className="absolute bottom-[20%] -left-[10%] w-[50%] h-[50%] rounded-full bg-gradient-to-tr from-[#00B5A5]/10 to-transparent blur-3xl opacity-60" />
            <div className="absolute top-[10%] -right-[10%] w-[50%] h-[50%] rounded-full bg-gradient-to-b from-[#0E2A47]/5 to-transparent blur-3xl opacity-60" />
         </div>
-        <div className="container mx-auto max-w-6xl 2xl:max-w-7xl 3xl:max-w-[1440px] px-4 sm:px-6 relative z-10">
+        <div className="container mx-auto max-w-6xl px-4 sm:px-6 relative z-10">
 
           <div className="text-center mb-16 animate-on-scroll fade-in-up">
             <h2 className="text-4xl font-bold text-[#0E2A47]">Why Choose Our Packages?</h2>
