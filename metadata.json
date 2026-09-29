@@ -1,0 +1,6 @@
+{
+  "name": "SilverLine Hospitals",
+  "description": "SilverLine Hospital, Trichy's pioneer multi-speciality hospital. This web application provides patient information, appointment booking, and showcases our advanced medical services.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

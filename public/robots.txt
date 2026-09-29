@@ -1,0 +1,6 @@
+# Robots.txt for SilverLine Hospital Trichy
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://silverlinehospitals.com/sitemap.xml
